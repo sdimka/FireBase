@@ -17,9 +17,17 @@ android {
     }
 
     buildTypes {
+        debug {
+            buildConfigField "int", "FOO", "42"
+        }
         release {
+            buildConfigField "int", "FOO", "42"
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        buildTypes.each {
+            it.buildConfigField 'String', 'APP_KEY_1', 'AppKey'
+            it.resValue 'string', 'APP_KEY_2', 'AppKey'
         }
     }
 }
