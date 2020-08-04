@@ -4,6 +4,6 @@ import retrofit2.Call
 import retrofit2.http.GET
 
 interface BottlesService {
-    @GET
+    @GET("3")
     fun getBottles(): Call<BottleJson>
 }

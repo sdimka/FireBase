@@ -1,5 +1,6 @@
 package com.example.firebase
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -7,6 +8,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.activity_main.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
 //    val a = R.string.APP_KEY_2
@@ -18,6 +22,27 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
+        FireBaseApp.instance.bottlesService!!.getBottles()
+            .enqueue(object : Callback<BottleJson> {
+                override fun onFailure(call: Call<BottleJson>, t: Throwable) {
+                    t.printStackTrace()
+                }
+
+                override fun onResponse(call: Call<BottleJson>, response: Response<BottleJson>) {
+                    if(response.isSuccessful){
+                        var bottleJsonList = response.body()
+                        bottleList.add(Bottle(bottleJsonList))
+                    } else {
+
+                    }
+                }
+
+
+            })
+
+
+
         val suppFM = supportFragmentManager
         recyclerBottle.apply {
             layoutManager = LinearLayoutManager(this@MainActivity)
@@ -25,6 +50,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         gsonSamples()
+
     }
 
     fun gsonSamples(){
