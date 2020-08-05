@@ -4,6 +4,8 @@ import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -23,19 +25,34 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
+        loader.visibility = View.VISIBLE
         FireBaseApp.instance.bottlesService!!.getBottles()
-            .enqueue(object : Callback<BottleJson> {
-                override fun onFailure(call: Call<BottleJson>, t: Throwable) {
+            .enqueue(object : Callback<List<BottleJson>> {
+                override fun onFailure(call: Call<List<BottleJson>>, t: Throwable) {
                     t.printStackTrace()
+                    loader.visibility = View.GONE
+                    Toast.makeText(this@MainActivity,
+                        "ERROR " + t.javaClass.simpleName,
+                        Toast.LENGTH_SHORT).show()
                 }
 
-                override fun onResponse(call: Call<BottleJson>, response: Response<BottleJson>) {
+                override fun onResponse(
+                    call: Call<List<BottleJson>>,
+                    response: Response<List<BottleJson>>
+                ) {
                     if(response.isSuccessful){
-                        var bottleJsonList = response.body()
-                        bottleList.add(Bottle(bottleJsonList))
-                    } else {
 
+                        var bottleJsonList = response.body()
+                        bottleJsonList!!.forEach { bottleJson:
+                                                   BottleJson -> bottleList.add(Bottle(bottleJson)) }
+                        recyclerBottle.adapter?.notifyDataSetChanged()
+
+                    } else {
+                        Toast.makeText(this@MainActivity,
+                            "FAIL " + response.code(),
+                            Toast.LENGTH_SHORT).show()
                     }
+                    loader.visibility = View.GONE
                 }
 
 
@@ -49,7 +66,7 @@ class MainActivity : AppCompatActivity() {
             adapter = BottleViewAdapter(bottleList)
         }
 
-        gsonSamples()
+//        gsonSamples()
 
     }
 
@@ -71,9 +88,10 @@ class MainActivity : AppCompatActivity() {
         val  newSO: SimpleObject = gson.fromJson(jString, SimpleObject::class.java)
         Log.d("gson", newSO.toString())
 
-        var bottleList = BottleRepo.items
-        val bjString = gson.toJson(bottleList)
-        Log.d("gson", bjString)
+        // Print botles as Json
+//        var bottleList = BottleRepo.items
+//        val bjString = gson.toJson(bottleList)
+//        Log.d("gson", bjString)
 
     }
 

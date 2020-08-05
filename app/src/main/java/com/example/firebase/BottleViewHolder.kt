@@ -12,7 +12,6 @@ class BottleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     var tView3 : TextView? = null
 
     init {
-        Log.d("AAA!!!", "Bla-bla-bla")
         tView1 = itemView.findViewById(R.id.tv_1)
         tView2 = itemView.findViewById(R.id.tv_2)
         tView3 = itemView.findViewById(R.id.tv_3)

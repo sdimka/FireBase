@@ -23,7 +23,7 @@ class FireBaseApp: Application() {
 //    }
 
     fun initRetrofit(){
-        val baseUrl: String = "http://jsonplaceholder.typicode.com/posts/"
+        val baseUrl: String = "https://jsonplaceholder.typicode.com/"
         val retrofit = Retrofit.Builder()
             .baseUrl(baseUrl)
             .addConverterFactory(GsonConverterFactory.create())
