@@ -15,10 +15,10 @@ object BottleRepo {
 ////        items.add(Bottle("Бленд", 2019, 13.7,0, false,
 ////            true, 1, 2, listOf<Int>(7,5,1)))
 
-        items.add(Bottle(1, "Рислинг", "13.5,1"))
-        items.add(Bottle(2, "Вионье", "13.5,1"))
-        items.add(Bottle(3, "Мускат", "13.5,1"))
-        items.add(Bottle(4, "Бленд", "13.5,1"))
+        items.add(Bottle(1, "Рислинг", "13.5,1", "URL"))
+        items.add(Bottle(2, "Вионье", "13.5,1", "URL"))
+        items.add(Bottle(3, "Мускат", "13.5,1", "URL"))
+        items.add(Bottle(4, "Бленд", "13.5,1", "URL"))
 
 
     }

@@ -30,6 +30,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_2" />
 
+    <ImageView
+        android:id="@+id/iv_1"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <View
         style="@style/Divider"
         app:layout_constraintEnd_toEndOf="parent"
