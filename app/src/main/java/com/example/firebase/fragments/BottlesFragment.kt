@@ -10,6 +10,7 @@ import com.example.firebase.BottleViewAdapter
 import com.example.firebase.R
 import com.example.firebase.models.Bottle
 import com.example.firebase.services.BottleFBService
+import com.firebase.ui.database.FirebaseRecyclerAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 
 class BottlesFragment: Fragment() {
@@ -39,6 +40,8 @@ class BottlesFragment: Fragment() {
         }
 
         BottleFBService.instance.basicReadWrite(bottleList, recyclerBottle)
+
+//        val fbRecAdapter = FirebaseRecyclerAdapter
 
     }
 }
