@@ -1,4 +1,6 @@
-package com.example.firebase
+package com.example.firebase.models
+
+import com.example.firebase.BottleJson
 
 class Bottle( var id: Int? = null,
     var name: String? = null, var descripton: String? = null, var img: String? = null)

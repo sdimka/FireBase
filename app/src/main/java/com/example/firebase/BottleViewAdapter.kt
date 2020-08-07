@@ -3,6 +3,7 @@ package com.example.firebase
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.firebase.models.Bottle
 
 class BottleViewAdapter (val list: List<Bottle>): RecyclerView.Adapter<BottleViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BottleViewHolder {

@@ -1,10 +1,10 @@
 package com.example.firebase
 
-import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.firebase.models.Bottle
 import com.squareup.picasso.Picasso
 
 class BottleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

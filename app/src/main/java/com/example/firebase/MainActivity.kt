@@ -1,21 +1,11 @@
 package com.example.firebase
 
 import android.os.Bundle
-import android.util.Log
-import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.ValueEventListener
-import com.google.firebase.database.ktx.database
-import com.google.firebase.ktx.Firebase
-import com.google.gson.GsonBuilder
+import com.example.firebase.fragments.BottlesFragment
+import com.example.firebase.fragments.FridgeFragment
 import kotlinx.android.synthetic.main.activity_main.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+
 
 class MainActivity : AppCompatActivity() {
 //    val a = R.string.APP_KEY_2
@@ -31,126 +21,20 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
-        loader.visibility = View.VISIBLE
-        FireBaseApp.instance.bottlesService!!.getBottlesByAId(1)
-            .enqueue(object : Callback<List<BottleJson>> {
-                override fun onFailure(call: Call<List<BottleJson>>, t: Throwable) {
-                    t.printStackTrace()
-                    loader.visibility = View.GONE
-                    Toast.makeText(this@MainActivity,
-                        "ERROR " + t.javaClass.simpleName,
-                        Toast.LENGTH_SHORT).show()
-                }
-
-                override fun onResponse(
-                    call: Call<List<BottleJson>>,
-                    response: Response<List<BottleJson>>
-                ) {
-                    if(response.isSuccessful){
-//                        bottleList.clear()
-                        var bottleJsonList = response.body()
-                        bottleJsonList!!.forEach { bottleJson:
-                                                   BottleJson -> bottleList.add(Bottle(bottleJson)) }
-                        recyclerBottle.adapter?.notifyDataSetChanged()
-
-                    } else {
-                        Toast.makeText(this@MainActivity,
-                            "FAIL " + response.code(),
-                            Toast.LENGTH_SHORT).show()
-                    }
-                    loader.visibility = View.GONE
-                }
-
-
-            })
-
-
-
-        val suppFM = supportFragmentManager
-        recyclerBottle.apply {
-            layoutManager = LinearLayoutManager(this@MainActivity)
-            adapter = BottleViewAdapter(bottleList)
+        main_bottle.setOnClickListener(){
+            supportFragmentManager
+                .beginTransaction()
+                .addToBackStack(null)
+                .replace(R.id.mainFrameContainer, BottlesFragment(), "BottlesFragment" )
+                .commit()
         }
 
-//        gsonSamples()
-
-        basicReadWrite()
-
-    }
-
-    fun gsonSamples(){
-//        val gson: Gson = Gson()
-//        val so = SimpleObject("FirstName", 25, listOf("SecondName", "ThirdName"))
-//        val jString = gson.toJson(so)
-//        Log.d("gson", jString )
-//        val  newSO: SimpleObject = gson.fromJson(jString, SimpleObject::class.java)
-//        Log.d("gson", newSO.toString())
-
-        val gson = GsonBuilder()
-            .serializeNulls()
-//            .registerTypeAdapter()
-            .create()
-        val so = SimpleObject("FirstName", 25, listOf("SecondName", "ThirdName"))
-        val jString = gson.toJson(so)
-        Log.d("gson", jString )
-        val  newSO: SimpleObject = gson.fromJson(jString, SimpleObject::class.java)
-        Log.d("gson", newSO.toString())
-
-        // Print botles as Json
-//        var bottleList = BottleRepo.items
-//        val bjString = gson.toJson(bottleList)
-//        Log.d("gson", bjString)
-
-    }
-
-    inner class SimpleObject(var name: String, var age: Int, var nicknames: List<String>) {
-        override fun toString(): String {
-            return "SimpleObject(name='$name', age=$age, nicknames=$nicknames)"
+        main_fridge.setOnClickListener(){
+            supportFragmentManager
+                .beginTransaction()
+                .addToBackStack(null)
+                .replace(R.id.mainFrameContainer, FridgeFragment(), "FridgeFragment")
+                .commit()
         }
-    }
-
-    fun basicReadWrite() {
-        // [START write_message]
-        // Write a message to the database
-//        val database = Firebase.database
-//        val myRef = database.getReference("Bottles")
-
-//        myRef.setValue(bottleList)
-
-//        myRef.setValue("Hello, World!")
-
-        val databaseReference = Firebase.database.reference
-        val newRef = databaseReference.child("Bottles")
-
-//        bottleList.forEach{ bottle -> newRef.push().setValue(bottle)}
-
-
-        newRef.addValueEventListener(object : ValueEventListener{
-            override fun onCancelled(error: DatabaseError) {
-                Log.w(TAG, "Failed to read value.", error.toException())
-            }
-
-            override fun onDataChange(snapshot: DataSnapshot) {
-                for (ds in snapshot.children) {
-                    val bottle: Bottle? = ds.getValue(Bottle::class.java)
-                    Log.d("TAG", bottle?.name.toString())
-                }
-            }
-        })
-
-        val query = newRef.orderByChild("id").equalTo(1.0)
-        query.addListenerForSingleValueEvent(object: ValueEventListener{
-            override fun onCancelled(error: DatabaseError) {
-                Log.w(TAG, "Failed to read value.", error.toException())
-            }
-
-            override fun onDataChange(snapshot: DataSnapshot) {
-                Log.d("TAG", snapshot.childrenCount.toString())
-                for (child in snapshot.children){
-                    Log.d("TAG", child.value.toString())
-                }
-            }
-        })
     }
 }
