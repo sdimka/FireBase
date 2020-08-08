@@ -1,4 +1,5 @@
 package com.example.firebase.models
 
-class Fridge {
+class Fridge(var id: Int? = null, var name: String? = null,
+             var sizeX: Int? = null, var sizeY : Int? = null ) {
 }

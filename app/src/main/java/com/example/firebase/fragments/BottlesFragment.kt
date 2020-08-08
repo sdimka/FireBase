@@ -16,7 +16,7 @@ import com.example.firebase.services.BottleFBService
 import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.firebase.database.FirebaseDatabase
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.bottle_editor.*
 
 
 class BottlesFragment: Fragment() {
@@ -80,6 +80,7 @@ class BottlesFragment: Fragment() {
         }
 
         val suppFM = activity?.supportFragmentManager
+
         recyclerBottle.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = bAdapter

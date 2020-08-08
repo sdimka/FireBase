@@ -6,10 +6,12 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <TextView
-        android:id="@+id/bottleFragment"
-        android:layout_width="wrap_content"
+        android:id="@+id/bottleEditorText"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#B0BCDD"
         android:text="Bottle Editor"
+        android:textAlignment="center"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,7 +22,7 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bottleEditorText"
         tools:listitem="@layout/bottle_item" />
 
     <FrameLayout
@@ -30,7 +32,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/recyclerBottle"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@+id/bottleEditorText" />
 
 
 <!--    <FrameLayout-->
