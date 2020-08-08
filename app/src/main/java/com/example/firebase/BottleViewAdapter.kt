@@ -25,4 +25,5 @@ class BottleViewAdapter (val list: List<Bottle>): RecyclerView.Adapter<BottleVie
         super.onAttachedToRecyclerView(recyclerView)
 
     }
+
 }

@@ -21,6 +21,7 @@ class BottleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         iView1 = itemView.findViewById(R.id.iv_1)
     }
 
+
     fun bind(item: Bottle){
         tView1?.setText(item.id.toString())
         tView2?.setText(item.name)
@@ -32,4 +33,5 @@ class BottleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             .error(R.drawable.ic_baseline_error_outline_24)
             .into(iView1)
     }
+
 }
