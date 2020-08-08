@@ -24,7 +24,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/fridgeInfoSixeX"
+        android:id="@+id/fridgeInfoSizeX"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="3"
@@ -38,7 +38,7 @@
         android:layout_height="wrap_content"
         android:ems="3"
         android:hint="SizeY"
-        app:layout_constraintStart_toEndOf="@+id/fridgeInfoSixeX"
+        app:layout_constraintStart_toEndOf="@+id/fridgeInfoSizeX"
         app:layout_constraintTop_toBottomOf="@+id/fridgeInfoName" />
 
     <Button
@@ -48,7 +48,7 @@
         android:text="Generate"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fridgeInfoSixeX" />
+        app:layout_constraintTop_toBottomOf="@+id/fridgeInfoSizeX" />
 
     <Button
         android:id="@+id/fridgeInfoSave"

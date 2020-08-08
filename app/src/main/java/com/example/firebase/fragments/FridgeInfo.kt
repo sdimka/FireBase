@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.firebase.R
+import com.example.firebase.models.Slot
 import kotlinx.android.synthetic.main.fridge_info.*
 
 class FridgeInfo: Fragment() {
@@ -22,14 +23,29 @@ class FridgeInfo: Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         fridgeInfoCancel.setOnClickListener {
+            val fragment = fragmentManager!!.findFragmentByTag("FridgeInfo");
+            if(fragment != null){
+            fragmentManager!!.beginTransaction()
+                .remove(fragment)
+                .commit();}
+        }
 
-            this.fragmentManager!!.beginTransaction()
-                .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
-                .hide(FridgeInfo())
-                .commit();
+        fridgeInfoGen.setOnClickListener {
+            val id = fridgeInfoID.text.toString()
+            val name = fridgeInfoName.text.toString()
+            val sizeX = fridgeInfoSizeX.text.toString().toInt()
+            val sizeY = fridgeInfoSizeY.text.toString().toInt()
 
+        }
+    }
 
-//            this.fragmentManager?.popBackStack()
+    fun generator(sX: Int,sY: Int) {
+        val list = mutableMapOf<String, Slot>()
+        for (i in 1..sY){
+            for (k in 1..sX){
+                val ind: String = k.toString() + "." + i.toString()
+                list.put(ind, Slot())
+            }
         }
     }
 }
