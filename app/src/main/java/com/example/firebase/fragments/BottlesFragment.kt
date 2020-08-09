@@ -13,8 +13,10 @@ import com.example.firebase.BottleViewHolder
 import com.example.firebase.R
 import com.example.firebase.models.Bottle
 import com.example.firebase.services.BottleFBService
+import com.firebase.ui.common.ChangeEventType
 import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.firebase.ui.database.FirebaseRecyclerOptions
+import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.bottle_editor.*
 
@@ -75,6 +77,7 @@ class BottlesFragment: Fragment() {
                         .beginTransaction()
                         .replace(R.id.bottleEditorFrameContainer, BottleItemEditor(model), "BottleItemEditor")
                         .commit()
+
                 }
             }
         }

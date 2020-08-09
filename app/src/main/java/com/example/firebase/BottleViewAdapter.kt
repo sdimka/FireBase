@@ -18,7 +18,6 @@ class BottleViewAdapter (val list: List<Bottle>): RecyclerView.Adapter<BottleVie
     override fun onBindViewHolder(holder: BottleViewHolder, position: Int) {
         val rec : Bottle = list[position]
         holder.bind(rec)
-
     }
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
