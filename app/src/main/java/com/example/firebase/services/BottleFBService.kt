@@ -27,16 +27,6 @@ class BottleFBService {
 
 
     fun basicReadWrite(arrayList: ArrayList<Bottle>, recyclerView: RecyclerView) {
-        // [START write_message]
-        // Write a message to the database
-//        val database = Firebase.database
-//        val myRef = database.getReference("Bottles")
-
-//        myRef.setValue(bottleList)
-
-//        myRef.setValue("Hello, World!")
-
-
 
 //        bottleList.forEach{ bottle -> bottlesRef.push().setValue(bottle)}
 
@@ -69,6 +59,18 @@ class BottleFBService {
                 }
             }
         })
+    }
+
+    fun upDate(fbKey: String, bottle: Bottle){
+        bottlesRef.child(fbKey).setValue(bottle)
+    }
+
+    fun add(bottle: Bottle){
+        bottlesRef.push().setValue(bottle)
+    }
+
+    fun delete(fbKey: String){
+        bottlesRef.child(fbKey).removeValue()
     }
 
 }

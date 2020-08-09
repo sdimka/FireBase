@@ -5,11 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.firebase.fragments.BottlesFragment
 import com.example.firebase.models.Bottle
+import com.example.firebase.services.BottleFBService
 import kotlinx.android.synthetic.main.bottle_item_editor.*
 
-class BottleItemEditor(val bottle: Bottle): Fragment() {
+class BottleItemEditor(
+    val bottle: Bottle,
+    val key: String?
+): Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,10 +26,15 @@ class BottleItemEditor(val bottle: Bottle): Fragment() {
         super.onActivityCreated(savedInstanceState)
         bottleItemName.setText(bottle.name)
         bottleItemYear.setText(bottle.descripton)
+        bottleItemFBKey.text = key
 
         bottleItemSave.setOnClickListener {
             bottle.name = bottleItemName.text.toString()
+            BottleFBService.instance.upDate(key!!, bottle)
         }
+    }
+
+    fun save(fbKey: String){
 
     }
 

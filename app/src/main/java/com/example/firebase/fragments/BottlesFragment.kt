@@ -4,19 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.firebase.BottleItemEditor
-import com.example.firebase.BottleViewAdapter
 import com.example.firebase.BottleViewHolder
 import com.example.firebase.R
 import com.example.firebase.models.Bottle
-import com.example.firebase.services.BottleFBService
-import com.firebase.ui.common.ChangeEventType
 import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.firebase.ui.database.FirebaseRecyclerOptions
-import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.bottle_editor.*
 
@@ -52,8 +47,8 @@ class BottlesFragment: Fragment() {
 //        val fbRecAdapter = FirebaseRecyclerAdapter
 
         val query = FirebaseDatabase.getInstance()
-            .getReference()
-            .child("Bottles");
+            .reference
+            .child("Bottles")
 
 
         val options: FirebaseRecyclerOptions<Bottle> =
@@ -63,6 +58,7 @@ class BottlesFragment: Fragment() {
                 .build()
 
         val bAdapter = object : FirebaseRecyclerAdapter<Bottle, BottleViewHolder>(options) {
+            
             override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BottleViewHolder {
                 return BottleViewHolder(
                     LayoutInflater.from(parent.context)
@@ -72,10 +68,11 @@ class BottlesFragment: Fragment() {
 
             override fun onBindViewHolder(holder: BottleViewHolder, position: Int, model: Bottle) {
                 holder.bind(model)
+
                 holder.itemView.setOnClickListener{
                     activity!!.supportFragmentManager
                         .beginTransaction()
-                        .replace(R.id.bottleEditorFrameContainer, BottleItemEditor(model), "BottleItemEditor")
+                        .replace(R.id.bottleEditorFrameContainer, BottleItemEditor(model, getRef(position).key), "BottleItemEditor")
                         .commit()
 
                 }
