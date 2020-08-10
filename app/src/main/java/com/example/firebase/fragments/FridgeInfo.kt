@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import com.example.firebase.R
 import com.example.firebase.models.Fridge
 import com.example.firebase.models.Slot
+import com.example.firebase.services.FridgeFBService
 import kotlinx.android.synthetic.main.fridge_info.*
 
 class FridgeInfo: Fragment() {
@@ -62,7 +63,13 @@ class FridgeInfo: Fragment() {
 
             } else Toast.makeText(this.context, "Укажите размеры!!!", Toast.LENGTH_SHORT ).show()
 
-
+            fridgeInfoSave.setOnClickListener {
+                if (newFridge != null){
+                    FridgeFBService.instance.addFridge(newFridge!!)
+                } else {
+                    Toast.makeText(this.context, "Please generate correct fridge first!",
+                        Toast.LENGTH_SHORT).show()}
+            }
 
 
 

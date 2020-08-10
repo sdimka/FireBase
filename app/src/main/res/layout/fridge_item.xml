@@ -2,23 +2,82 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/fridgeItemText1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
         android:id="@+id/fridgeItemName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ID"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="8dp"
+        android:text="Name"
+        android:layout_marginStart="8dp"
+        app:layout_constraintStart_toEndOf="@+id/fridgeItemText1"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/fridgeItemTextX"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Name"
+        android:layout_marginTop="8dp"
+        android:text="X: "
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fridgeItemName"/>
+
+    <TextView
+        android:id="@+id/fridgeItemSizeX"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="SizeX"
+        app:layout_constraintStart_toEndOf="@+id/fridgeItemTextX"
+        app:layout_constraintTop_toBottomOf="@+id/fridgeItemName" />
+
+    <TextView
+        android:id="@+id/fridgeItemTextY"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="8dp"
+        android:text="Y: "
+        app:layout_constraintStart_toEndOf="@+id/fridgeItemSizeX"
+        app:layout_constraintTop_toBottomOf="@+id/fridgeItemName"/>
+
+    <TextView
+        android:id="@+id/fridgeItemSizeY"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="SizeY"
+        app:layout_constraintStart_toEndOf="@+id/fridgeItemTextY"
+        app:layout_constraintTop_toBottomOf="@+id/fridgeItemName" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/ic_baseline_delete_forever_24"
+        app:layout_constraintStart_toEndOf="@+id/fridgeItemName"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        style="@style/Divider"
+        android:layout_width="120dp"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fridgeItemSizeY" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -23,9 +23,6 @@ class BottleFBService {
         var instance = BottleFBService()
     }
 
-
-
-
     fun basicReadWrite(arrayList: ArrayList<Bottle>, recyclerView: RecyclerView) {
 
 //        bottleList.forEach{ bottle -> bottlesRef.push().setValue(bottle)}
