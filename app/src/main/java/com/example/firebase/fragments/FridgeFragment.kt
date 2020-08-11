@@ -40,7 +40,7 @@ class FridgeFragment : Fragment(){
                 .build()
 
 
-        val fridgeFBAdapter = FridgeViewFBAdapter(options)
+        val fridgeFBAdapter = FridgeViewFBAdapter(options, this)
 
         recyclerFrige.apply {
             layoutManager = LinearLayoutManager(context)

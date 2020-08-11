@@ -9,10 +9,12 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.firebase.R
 import com.example.firebase.fragments.slotComponents.SlotViewAdapter
+import com.example.firebase.models.Fridge
 import com.example.firebase.models.Slot
+import com.google.firebase.database.DatabaseReference
 import kotlinx.android.synthetic.main.slots.*
 
-class SlotsFragment(val slotsList: ArrayList<Slot>, val horizontalSize: Int ) : Fragment() {
+class SlotsFragment(val fridge: Fridge, val fridgeRef: String? ) : Fragment() {
 
     val TAG = "SlotsFragment"
 
@@ -27,11 +29,9 @@ class SlotsFragment(val slotsList: ArrayList<Slot>, val horizontalSize: Int ) : 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        slotsList.forEach{ a -> Log.d(TAG, a.key.toString())}
-
         slotsRecyclerView.apply {
-            layoutManager = GridLayoutManager(activity, horizontalSize)
-            adapter = SlotViewAdapter(slotsList)
+            layoutManager = GridLayoutManager(activity, fridge.sizeX!!)
+            adapter = SlotViewAdapter(fridge, 1, fridgeRef)
         }
 
         slotsRecyclerView.adapter?.notifyDataSetChanged()

@@ -57,7 +57,7 @@ class FridgeInfo: Fragment() {
                     fragmentManager!!
                         .beginTransaction()
                         .addToBackStack("SlotsFragment")
-                        .replace(R.id.fridgeEditorSlots, SlotsFragment(slotsList, sizeX), "SlotsFragment" )
+                        .replace(R.id.fridgeEditorSlots, SlotsFragment(newFridge!!, null), "SlotsFragment" )
                         .commit()
                 } else Toast.makeText(this.context, "Размеры должны быть в рамках 1-21", Toast.LENGTH_SHORT ).show()
 
