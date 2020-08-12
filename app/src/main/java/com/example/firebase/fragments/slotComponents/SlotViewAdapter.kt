@@ -3,6 +3,7 @@ package com.example.firebase.fragments.slotComponents
 import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.firebase.R
@@ -10,7 +11,7 @@ import com.example.firebase.models.Fridge
 import com.example.firebase.models.Slot
 import com.example.firebase.services.FridgeFBService
 
-class SlotViewAdapter (val fridge: Fridge, val typeOfView: Int, val fridgeRef: String?) : RecyclerView.Adapter<SlotViewHolder>(){
+class SlotViewAdapter (val fridge: Fridge, val fridgeRef: String?, val selectedBottle: String?) : RecyclerView.Adapter<SlotViewHolder>(){
 
     var bColor: Drawable? = null
     var fColor: Drawable? = null
@@ -20,12 +21,12 @@ class SlotViewAdapter (val fridge: Fridge, val typeOfView: Int, val fridgeRef: S
         val inflater = LayoutInflater.from(parent.context)
         var bColor = ContextCompat.getDrawable(parent.context, R.drawable.rounded_dark)
         var fColor = ContextCompat.getDrawable(parent.context, R.drawable.rounded_beige)
-        var sColor = ContextCompat.getDrawable(parent.context, R.drawable.rounded_wine)
+        var sColor = ContextCompat.getDrawable(parent.context, R.drawable.rounded_dark)
 
-        if (typeOfView == 1) {
+        if (selectedBottle != null) {
             bColor = ContextCompat.getDrawable(parent.context, R.drawable.rounded_dark)
             fColor = ContextCompat.getDrawable(parent.context, R.drawable.rounded_beige)
-            sColor = ContextCompat.getDrawable(parent.context, R.drawable.rounded_dark)
+            sColor = ContextCompat.getDrawable(parent.context, R.drawable.rounded_wine)
         }
 
         return SlotViewHolder(inflater.inflate(R.layout.slot_item, parent, false),
@@ -38,13 +39,13 @@ class SlotViewAdapter (val fridge: Fridge, val typeOfView: Int, val fridgeRef: S
 
     override fun onBindViewHolder(holder: SlotViewHolder, position: Int) {
         val slot : Slot = fridge.slots!![position]
-        holder.bind(slot, typeOfView)
-        if (typeOfView == 1){
+        holder.bind(slot, selectedBottle)
+        if (selectedBottle != null){
             holder.itemView.setOnClickListener{
                 if (slot.store == null){
                     FridgeFBService.instance
-                        .updateSlot(fridgeRef!!, position.toString(), "-ME454GnPOI5OhtOyDuT")
-                    slot.store = "-ME454GnPOI5OhtOyDuT"
+                        .updateSlot(fridgeRef!!, position.toString(), selectedBottle)
+                    slot.store = selectedBottle
                     holder.refresh(slot)
                 } else {
                     FridgeFBService.instance
@@ -55,7 +56,9 @@ class SlotViewAdapter (val fridge: Fridge, val typeOfView: Int, val fridgeRef: S
                 }
             }
         } else {
-
+            holder.itemView.setOnClickListener {
+                Toast.makeText(holder.itemView.context, slot.store, Toast.LENGTH_SHORT).show()
+            }
         }
 
     }

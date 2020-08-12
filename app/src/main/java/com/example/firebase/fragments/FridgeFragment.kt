@@ -8,15 +8,14 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.firebase.R
 import com.example.firebase.fragments.fridgeComponents.FridgeViewFBAdapter
-import com.example.firebase.models.Bottle
 import com.example.firebase.models.Fridge
 import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.fridge_editor.*
 
-class FridgeFragment : Fragment(){
+class FridgeFragment : Fragment(), SelectedWineChanged{
 
-    val selectedBottle: String? = null
+    var selectedBottle: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,7 +41,7 @@ class FridgeFragment : Fragment(){
                 .build()
 
 
-        val fridgeFBAdapter = FridgeViewFBAdapter(options, this)
+        val fridgeFBAdapter = FridgeViewFBAdapter(options, this, selectedBottle)
 
         recyclerFrige.apply {
             layoutManager = LinearLayoutManager(context)
@@ -65,6 +64,14 @@ class FridgeFragment : Fragment(){
                 .commit()
         }
 
+
+    }
+
+    override fun changed(newWine: String?) {
+
+        var frag = (fragmentManager!!.findFragmentByTag("SlotsFragment") as SlotsFragment)
+        frag.selectedBottle = newWine
+        frag.upDateView()
 
     }
 }

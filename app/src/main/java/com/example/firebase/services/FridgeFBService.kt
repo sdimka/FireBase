@@ -1,7 +1,6 @@
 package com.example.firebase.services
 
 import com.example.firebase.models.Fridge
-import com.example.firebase.models.Slot
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 

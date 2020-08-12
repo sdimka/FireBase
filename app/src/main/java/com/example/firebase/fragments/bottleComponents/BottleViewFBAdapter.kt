@@ -10,7 +10,9 @@ import com.example.firebase.models.Bottle
 import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.firebase.ui.database.FirebaseRecyclerOptions
 
-class BottleViewFBAdapter(opt : FirebaseRecyclerOptions<Bottle>, val fragment: Fragment, val listener: (Bottle) -> Unit): FirebaseRecyclerAdapter<Bottle, BottleViewHolder>(opt) {
+class BottleViewFBAdapter(opt : FirebaseRecyclerOptions<Bottle>,
+                          val fragment: Fragment,
+                          val listener: (Bottle) -> Unit): FirebaseRecyclerAdapter<Bottle, BottleViewHolder>(opt) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BottleViewHolder {
             return BottleViewHolder(

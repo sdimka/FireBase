@@ -10,7 +10,7 @@ import com.example.firebase.models.Fridge
 import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.firebase.ui.database.FirebaseRecyclerOptions
 
-class FridgeViewFBAdapter(opt : FirebaseRecyclerOptions<Fridge>, val fragment: Fragment) : FirebaseRecyclerAdapter<Fridge, FridgeViewHolder>(opt){
+class FridgeViewFBAdapter(opt : FirebaseRecyclerOptions<Fridge>, val fragment: Fragment, val selectedBottle: String?) : FirebaseRecyclerAdapter<Fridge, FridgeViewHolder>(opt){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FridgeViewHolder {
         return FridgeViewHolder(
@@ -25,7 +25,7 @@ class FridgeViewFBAdapter(opt : FirebaseRecyclerOptions<Fridge>, val fragment: F
             fragment.fragmentManager!!
                 .beginTransaction()
                 .addToBackStack("SlotsFragment")
-                .replace(R.id.fridgeEditorSlots, SlotsFragment(model!!, getRef(position).key ), "SlotsFragment" )
+                .replace(R.id.fridgeEditorSlots, SlotsFragment(model!!, getRef(position).key, selectedBottle ), "SlotsFragment" )
                 .commit()
         }
     }

@@ -13,15 +13,28 @@ import com.example.firebase.models.Bottle
 import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.wine_selector.*
+import java.lang.ClassCastException
 
 class FridgeWineSelector: Fragment() {
+
+    var selectedWineChanged: SelectedWineChanged? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        try {
+            selectedWineChanged = fragmentManager!!.findFragmentByTag("FridgeFragment") as SelectedWineChanged
+        } catch (e: ClassCastException){
+            throw ClassCastException(
+                activity.toString() + " must implement onSomeEventListener"
+            )
+        }
+
         return inflater.inflate(R.layout.wine_selector, container, false)
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -40,7 +53,7 @@ class FridgeWineSelector: Fragment() {
 
         val bAdapter = BottleViewFBAdapter(options, this) { item ->
 
-            Log.d("BootleSelector", item.id.toString())
+            selectedWineChanged?.changed(item.id)
 //            activity!!.supportFragmentManager
 //                .beginTransaction()
 //                .replace(

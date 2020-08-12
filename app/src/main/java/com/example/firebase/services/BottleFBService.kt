@@ -43,29 +43,45 @@ class BottleFBService {
         })
 
         val query = bottlesRef.orderByChild("id").equalTo(1.0)
-        query.addListenerForSingleValueEvent(object: ValueEventListener {
+        query.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onCancelled(error: DatabaseError) {
                 Log.w(TAG, "Failed to read value.", error.toException())
             }
 
             override fun onDataChange(snapshot: DataSnapshot) {
-                for (child in snapshot.children){
+                for (child in snapshot.children) {
                     Log.d("TAG", child.value.toString())
                 }
             }
         })
     }
 
-    fun upDate(fbKey: String, bottle: Bottle){
+    fun upDate(fbKey: String, bottle: Bottle) {
         bottlesRef.child(fbKey).setValue(bottle)
     }
 
-    fun add(bottle: Bottle){
+    fun add(bottle: Bottle) {
         bottlesRef.push().setValue(bottle)
     }
 
-    fun delete(fbKey: String){
+    fun delete(fbKey: String) {
         bottlesRef.child(fbKey).removeValue()
+    }
+
+    fun getBottleById(fbKey: String): Bottle? {
+        val query = bottlesRef.child(fbKey)
+        var bottle: Bottle? = null
+        query.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onCancelled(error: DatabaseError) {
+                Log.w(TAG, "Failed to read value.", error.toException())
+            }
+
+            override fun onDataChange(snapshot: DataSnapshot) {
+                bottle = snapshot.getValue(Bottle::class.java)
+
+            }
+        })
+        return bottle
     }
 
 }
