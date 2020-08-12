@@ -25,10 +25,10 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/fridgeEditorDelete"
+        android:id="@+id/fridgeEditorWineSelect"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Delete current"
+        android:text="Sel curr wine"
         app:layout_constraintStart_toEndOf="@+id/fridgeEditorAdd"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -39,7 +39,7 @@
         android:layout_marginLeft="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fridgeEditorDelete"
+        app:layout_constraintTop_toBottomOf="@+id/fridgeEditorWineSelect"
         tools:listitem="@layout/fridge_item" />
 
     <FrameLayout
@@ -55,7 +55,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/fridgeEditorDelete"
+        app:layout_constraintStart_toEndOf="@+id/fridgeEditorWineSelect"
         app:layout_constraintTop_toBottomOf="@+id/fridgeEditorText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

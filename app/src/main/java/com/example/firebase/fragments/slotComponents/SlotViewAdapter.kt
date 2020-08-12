@@ -43,8 +43,8 @@ class SlotViewAdapter (val fridge: Fridge, val typeOfView: Int, val fridgeRef: S
             holder.itemView.setOnClickListener{
                 if (slot.store == null){
                     FridgeFBService.instance
-                        .updateSlot(fridgeRef!!, position.toString(), "-ME454GXYBOwGVo66qUX")
-                    slot.store = "-ME454GXYBOwGVo66qUX"
+                        .updateSlot(fridgeRef!!, position.toString(), "-ME454GnPOI5OhtOyDuT")
+                    slot.store = "-ME454GnPOI5OhtOyDuT"
                     holder.refresh(slot)
                 } else {
                     FridgeFBService.instance

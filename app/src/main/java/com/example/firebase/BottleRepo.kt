@@ -19,7 +19,7 @@ object BottleRepo {
 
         items.add(
             Bottle(
-                1,
+                "1",
                 "Рислинг",
                 "13.5,1",
                 "URL"
@@ -27,7 +27,7 @@ object BottleRepo {
         )
         items.add(
             Bottle(
-                2,
+                "2",
                 "Вионье",
                 "13.5,1",
                 "URL"
@@ -35,7 +35,7 @@ object BottleRepo {
         )
         items.add(
             Bottle(
-                3,
+                "3",
                 "Мускат",
                 "13.5,1",
                 "URL"
@@ -43,7 +43,7 @@ object BottleRepo {
         )
         items.add(
             Bottle(
-                4,
+                "4",
                 "Бленд",
                 "13.5,1",
                 "URL"

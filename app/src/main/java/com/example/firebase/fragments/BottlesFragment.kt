@@ -1,14 +1,16 @@
 package com.example.firebase.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.firebase.BottleItemEditor
-import com.example.firebase.BottleViewHolder
+import com.example.firebase.fragments.bottleComponents.BottleViewHolder
 import com.example.firebase.R
+import com.example.firebase.fragments.bottleComponents.BottleViewFBAdapter
 import com.example.firebase.models.Bottle
 import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.firebase.ui.database.FirebaseRecyclerOptions
@@ -57,26 +59,16 @@ class BottlesFragment: Fragment() {
                 .setLifecycleOwner(this)
                 .build()
 
-        val bAdapter = object : FirebaseRecyclerAdapter<Bottle, BottleViewHolder>(options) {
-            
-            override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BottleViewHolder {
-                return BottleViewHolder(
-                    LayoutInflater.from(parent.context)
-                        .inflate(R.layout.bottle_item, parent, false)
+        val bAdapter = BottleViewFBAdapter(options, this) { item ->
+
+            activity!!.supportFragmentManager
+                .beginTransaction()
+                .replace(
+                    R.id.bottleEditorFrameContainer,
+                    BottleItemEditor(item, item.id),
+                    "BottleItemEditor"
                 )
-            }
-
-            override fun onBindViewHolder(holder: BottleViewHolder, position: Int, model: Bottle) {
-                holder.bind(model)
-
-                holder.itemView.setOnClickListener{
-                    activity!!.supportFragmentManager
-                        .beginTransaction()
-                        .replace(R.id.bottleEditorFrameContainer, BottleItemEditor(model, getRef(position).key), "BottleItemEditor")
-                        .commit()
-
-                }
-            }
+                .commit()
         }
 
         val suppFM = activity?.supportFragmentManager

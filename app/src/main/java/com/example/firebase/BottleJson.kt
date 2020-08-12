@@ -3,7 +3,7 @@ package com.example.firebase
 import com.google.gson.annotations.SerializedName
 
 class BottleJson (
-    val id: Int,
+    val id: String,
     @SerializedName("title") val name: String,
     @SerializedName("url")
     val description: String,

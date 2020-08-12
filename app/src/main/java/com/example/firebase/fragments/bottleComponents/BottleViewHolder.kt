@@ -1,9 +1,10 @@
-package com.example.firebase
+package com.example.firebase.fragments.bottleComponents
 
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.firebase.R
 import com.example.firebase.models.Bottle
 import com.squareup.picasso.Picasso
 

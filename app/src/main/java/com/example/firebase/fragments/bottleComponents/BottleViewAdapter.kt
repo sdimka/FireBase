@@ -1,14 +1,21 @@
-package com.example.firebase
+package com.example.firebase.fragments.bottleComponents
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.firebase.R
 import com.example.firebase.models.Bottle
 
 class BottleViewAdapter (val list: List<Bottle>): RecyclerView.Adapter<BottleViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BottleViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        return BottleViewHolder(inflater.inflate(R.layout.bottle_item, parent, false))
+        return BottleViewHolder(
+            inflater.inflate(
+                R.layout.bottle_item,
+                parent,
+                false
+            )
+        )
     }
 
     override fun getItemCount(): Int {

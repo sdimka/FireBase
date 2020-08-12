@@ -2,7 +2,7 @@ package com.example.firebase.models
 
 import com.example.firebase.BottleJson
 
-class Bottle( var id: Int? = null,
+class Bottle( var id: String? = null,
     var name: String? = null, var descripton: String? = null, var img: String? = null)
 // Null default values create a no-argument default constructor, which is needed
 // for deserialization from a DataSnapshot.

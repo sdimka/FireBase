@@ -55,6 +55,13 @@ class FridgeFragment : Fragment(){
                 .commit()
         }
 
+//        fridgeEditorWineSelect.setOnClickListener {
+//            activity!!.supportFragmentManager
+//                .beginTransaction()
+//                .addToBackStack("WineSelector")
+//                .replace(R.id.fridgeEditorFridgeInfo, )
+//        }
+
 
     }
 }
