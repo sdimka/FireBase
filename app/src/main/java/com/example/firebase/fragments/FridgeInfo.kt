@@ -11,6 +11,7 @@ import com.example.firebase.R
 import com.example.firebase.models.Fridge
 import com.example.firebase.models.Slot
 import com.example.firebase.services.FridgeFBService
+import kotlinx.android.synthetic.main.fridge_editor.*
 import kotlinx.android.synthetic.main.fridge_info.*
 
 class FridgeInfo: Fragment() {
@@ -63,6 +64,7 @@ class FridgeInfo: Fragment() {
 
             } else Toast.makeText(this.context, "Укажите размеры!!!", Toast.LENGTH_SHORT ).show()
 
+            fridgeInfoSave.isEnabled = true
             fridgeInfoSave.setOnClickListener {
                 if (newFridge != null){
                     FridgeFBService.instance.addFridge(newFridge!!)
@@ -75,12 +77,12 @@ class FridgeInfo: Fragment() {
 
         }
 
-        fridgeInfoSave.setOnClickListener {
+        fridgeInfoSave.isEnabled = false
 
-        }
     }
 
     fun generator(sX: Int,sY: Int): ArrayList<Slot> {
+        // toDo move to services
         val list = arrayListOf<Slot>()
         for (i in 1..sY){
             for (k in 1..sX){

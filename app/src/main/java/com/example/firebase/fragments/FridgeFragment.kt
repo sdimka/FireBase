@@ -16,6 +16,8 @@ import kotlinx.android.synthetic.main.fridge_editor.*
 
 class FridgeFragment : Fragment(){
 
+    val selectedBottle: String? = null
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -55,12 +57,13 @@ class FridgeFragment : Fragment(){
                 .commit()
         }
 
-//        fridgeEditorWineSelect.setOnClickListener {
-//            activity!!.supportFragmentManager
-//                .beginTransaction()
-//                .addToBackStack("WineSelector")
-//                .replace(R.id.fridgeEditorFridgeInfo, )
-//        }
+        fridgeEditorWineSelect.setOnClickListener {
+            activity!!.supportFragmentManager
+                .beginTransaction()
+                .addToBackStack("WineSelector")
+                .replace(R.id.fridgeEditorFridgeInfo, FridgeWineSelector(), "WineSelector" )
+                .commit()
+        }
 
 
     }

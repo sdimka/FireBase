@@ -37,7 +37,6 @@ class BottleFBService {
                 for (ds in snapshot.children) {
                     val bottle = ds.getValue(Bottle::class.java)
                     arrayList.add(bottle!!)
-                    Log.d("TAG", bottle?.name.toString())
                     recyclerView.adapter?.notifyDataSetChanged()
                 }
             }
@@ -50,7 +49,6 @@ class BottleFBService {
             }
 
             override fun onDataChange(snapshot: DataSnapshot) {
-                Log.d("TAG", snapshot.childrenCount.toString())
                 for (child in snapshot.children){
                     Log.d("TAG", child.value.toString())
                 }

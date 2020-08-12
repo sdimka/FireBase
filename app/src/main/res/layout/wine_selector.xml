@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerBottleSelector"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bottleEditorText"
+        tools:listitem="@layout/bottle_item" />
+
+    <Button
+        android:id="@+id/wineSelectorClose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Close"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerBottleSelector" />
+
+    <Button
+        android:id="@+id/wineSelectorSelNone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select None"
+        app:layout_constraintStart_toEndOf="@+id/wineSelectorClose"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerBottleSelector" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
