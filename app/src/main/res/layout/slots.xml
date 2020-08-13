@@ -6,12 +6,30 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <TextView
-        android:id="@+id/slotsText"
+        android:id="@+id/slotsName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="SOME TEXT"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginLeft="8dp"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/slotsBusy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SOME TEXT"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintStart_toEndOf="@+id/slotsName"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/slotsFree"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SOME TEXT"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintStart_toEndOf="@+id/slotsBusy"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -19,7 +37,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/slotsText"
+        app:layout_constraintTop_toBottomOf="@+id/slotsName"
         tools:listitem="@layout/slot_item" />
 
 

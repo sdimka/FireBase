@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import com.example.firebase.R
 import com.example.firebase.fragments.SlotsFragment
 import com.example.firebase.models.Fridge
+import com.example.firebase.services.FridgeFBService
 import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.firebase.ui.database.FirebaseRecyclerOptions
 
