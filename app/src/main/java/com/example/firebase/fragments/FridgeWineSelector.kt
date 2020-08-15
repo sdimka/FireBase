@@ -1,15 +1,14 @@
 package com.example.firebase.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.firebase.R
-import com.example.firebase.fragments.bottleComponents.BottleViewFBAdapter
-import com.example.firebase.models.Bottle
+import com.example.firebase.feature_bottles.presentation.bottlelist.recyclerview.BottleViewFBAdapter
+import com.example.firebase.feature_bottles.data.model.Bottle
 import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.wine_selector.*
@@ -51,9 +50,13 @@ class FridgeWineSelector: Fragment() {
                 .setLifecycleOwner(this)
                 .build()
 
-        val bAdapter = BottleViewFBAdapter(options, this) { item ->
+        val bAdapter =
+            BottleViewFBAdapter(
+                options,
+                this
+            ) { item ->
 
-            selectedWineChanged?.changed(item.id)
+                selectedWineChanged?.changed(item.id)
 //            activity!!.supportFragmentManager
 //                .beginTransaction()
 //                .replace(
@@ -62,7 +65,7 @@ class FridgeWineSelector: Fragment() {
 //                    "BottleItemEditor"
 //                )
 //                .commit()
-        }
+            }
 
         recyclerBottleSelector.apply {
             layoutManager = LinearLayoutManager(context)

@@ -1,11 +1,11 @@
-package com.example.firebase.fragments.slotComponents
+package com.example.firebase.feature_fridge.presentation.slotComponents
 
 import android.graphics.drawable.Drawable
 import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.firebase.R
-import com.example.firebase.models.Slot
+import com.example.firebase.feature_fridge.data.Slot
 
 
 class SlotViewHolder(itemView: View, val freeColor: Drawable,

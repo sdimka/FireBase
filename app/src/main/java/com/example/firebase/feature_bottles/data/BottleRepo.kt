@@ -1,6 +1,6 @@
-package com.example.firebase
+package com.example.firebase.feature_bottles.data
 
-import com.example.firebase.models.Bottle
+import com.example.firebase.feature_bottles.data.model.Bottle
 
 
 object BottleRepo {

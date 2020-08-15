@@ -1,4 +1,4 @@
-package com.example.firebase.models
+package com.example.firebase.feature_bottles.data.model
 
 import com.example.firebase.BottleJson
 

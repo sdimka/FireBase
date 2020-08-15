@@ -1,11 +1,9 @@
-package com.example.firebase.services
+package com.example.firebase.feature_bottles.domain
 
 
 import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
-import com.example.firebase.FireBaseApp
-import com.example.firebase.MainActivity
-import com.example.firebase.models.Bottle
+import com.example.firebase.feature_bottles.data.model.Bottle
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
@@ -20,7 +18,8 @@ class BottleFBService {
     val TAG = "BottleFBService"
 
     companion object {
-        var instance = BottleFBService()
+        var instance =
+            BottleFBService()
     }
 
     fun basicReadWrite(arrayList: ArrayList<Bottle>, recyclerView: RecyclerView) {

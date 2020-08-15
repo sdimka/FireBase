@@ -3,8 +3,9 @@ package com.example.firebase
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import com.example.firebase.fragments.BottlesFragment
-import com.example.firebase.fragments.FridgeFragment
+import com.example.firebase.feature_bottles.data.BottleRepo
+import com.example.firebase.feature_bottles.presentation.BottlesFragment
+import com.example.firebase.feature_fridge.presentation.FridgeFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -31,7 +32,8 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager
                 .beginTransaction()
                 .addToBackStack(null)
-                .replace(R.id.mainFrameContainer, BottlesFragment(), "BottlesFragment" )
+                .replace(R.id.mainFrameContainer,
+                    BottlesFragment(), "BottlesFragment" )
                 .commit()
         }
 
@@ -39,7 +41,8 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager
                 .beginTransaction()
                 .addToBackStack(null)
-                .replace(R.id.mainFrameContainer, FridgeFragment(), "FridgeFragment")
+                .replace(R.id.mainFrameContainer,
+                    FridgeFragment(), "FridgeFragment")
                 .commit()
         }
     }

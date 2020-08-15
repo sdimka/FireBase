@@ -4,14 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.firebase.R
-import com.example.firebase.models.Fridge
-import com.example.firebase.models.Slot
-import com.example.firebase.services.FridgeFBService
-import kotlinx.android.synthetic.main.fridge_editor.*
+import com.example.firebase.feature_fridge.presentation.fridgedetail.SlotsFragment
+import com.example.firebase.feature_fridge.data.Fridge
+import com.example.firebase.feature_fridge.data.Slot
+import com.example.firebase.feature_fridge.domain.FridgeFBService
 import kotlinx.android.synthetic.main.fridge_info.*
 
 class FridgeInfo: Fragment() {
@@ -54,11 +53,22 @@ class FridgeInfo: Fragment() {
 
                 if (sizeX in 1..21 && sizeY in 1..21){
                     val slotsList = generator(sizeX!!, sizeY!!)
-                    newFridge = Fridge(id, name, sizeX, sizeY, slotsList)
+                    newFridge = Fridge(
+                        id,
+                        name,
+                        sizeX,
+                        sizeY,
+                        slotsList
+                    )
                     fragmentManager!!
                         .beginTransaction()
                         .addToBackStack("SlotsFragment")
-                        .replace(R.id.fridgeEditorSlots, SlotsFragment(newFridge!!, null, null), "SlotsFragment" )
+                        .replace(R.id.fridgeEditorSlots,
+                            SlotsFragment(
+                                newFridge!!,
+                                null,
+                                null
+                            ), "SlotsFragment" )
                         .commit()
                 } else Toast.makeText(this.context, "Размеры должны быть в рамках 1-21", Toast.LENGTH_SHORT ).show()
 
@@ -87,7 +97,12 @@ class FridgeInfo: Fragment() {
         for (i in 1..sY){
             for (k in 1..sX){
                 val ind: String = i.toString() + "." + k.toString()
-                list.add(Slot(ind, null))
+                list.add(
+                    Slot(
+                        ind,
+                        null
+                    )
+                )
             }
         }
 

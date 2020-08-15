@@ -1,12 +1,13 @@
-package com.example.firebase
+package com.example.firebase.feature_bottles.presentation.bottledetail
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.firebase.models.Bottle
-import com.example.firebase.services.BottleFBService
+import com.example.firebase.R
+import com.example.firebase.feature_bottles.data.model.Bottle
+import com.example.firebase.feature_bottles.domain.BottleFBService
 import kotlinx.android.synthetic.main.bottle_item_editor.*
 
 class BottleItemEditor(

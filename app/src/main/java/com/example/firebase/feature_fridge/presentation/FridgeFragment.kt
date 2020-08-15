@@ -1,4 +1,4 @@
-package com.example.firebase.fragments
+package com.example.firebase.feature_fridge.presentation
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,13 +7,18 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.firebase.R
-import com.example.firebase.fragments.fridgeComponents.FridgeViewFBAdapter
-import com.example.firebase.models.Fridge
+import com.example.firebase.fragments.FridgeInfo
+import com.example.firebase.fragments.FridgeWineSelector
+import com.example.firebase.fragments.SelectedWineChanged
+import com.example.firebase.feature_fridge.presentation.fridgedetail.SlotsFragment
+import com.example.firebase.feature_fridge.presentation.fridgelist.recycleview.FridgeViewFBAdapter
+import com.example.firebase.feature_fridge.data.Fridge
 import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.fridge_editor.*
 
-class FridgeFragment : Fragment(), SelectedWineChanged{
+class FridgeFragment : Fragment(),
+    SelectedWineChanged {
 
     var selectedBottle: String? = null
 
@@ -41,7 +46,12 @@ class FridgeFragment : Fragment(), SelectedWineChanged{
                 .build()
 
 
-        val fridgeFBAdapter = FridgeViewFBAdapter(options, this, selectedBottle)
+        val fridgeFBAdapter =
+            FridgeViewFBAdapter(
+                options,
+                this,
+                selectedBottle
+            )
 
         recyclerFrige.apply {
             layoutManager = LinearLayoutManager(context)
@@ -52,7 +62,8 @@ class FridgeFragment : Fragment(), SelectedWineChanged{
             activity!!.supportFragmentManager
                 .beginTransaction()
                 .addToBackStack("FridgeInfo")
-                .replace(R.id.fridgeEditorFridgeInfo, FridgeInfo(), "FridgeInfo" )
+                .replace(R.id.fridgeEditorFridgeInfo,
+                    FridgeInfo(), "FridgeInfo" )
                 .commit()
         }
 
@@ -60,7 +71,8 @@ class FridgeFragment : Fragment(), SelectedWineChanged{
             activity!!.supportFragmentManager
                 .beginTransaction()
                 .addToBackStack("WineSelector")
-                .replace(R.id.fridgeEditorFridgeInfo, FridgeWineSelector(), "WineSelector" )
+                .replace(R.id.fridgeEditorFridgeInfo,
+                    FridgeWineSelector(), "WineSelector" )
                 .commit()
         }
 

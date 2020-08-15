@@ -1,7 +1,7 @@
-package com.example.firebase.fragments.slotComponents
+package com.example.firebase.feature_fridge.presentation.slotComponents
 
 import android.view.ViewGroup
-import com.example.firebase.models.Slot
+import com.example.firebase.feature_fridge.data.Slot
 import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.firebase.ui.database.FirebaseRecyclerOptions
 

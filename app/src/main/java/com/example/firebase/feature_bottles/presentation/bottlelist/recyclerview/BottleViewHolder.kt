@@ -1,11 +1,11 @@
-package com.example.firebase.fragments.bottleComponents
+package com.example.firebase.feature_bottles.presentation.bottlelist.recyclerview
 
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.firebase.R
-import com.example.firebase.models.Bottle
+import com.example.firebase.feature_bottles.data.model.Bottle
 import com.squareup.picasso.Picasso
 
 class BottleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

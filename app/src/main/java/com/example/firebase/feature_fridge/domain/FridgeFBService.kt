@@ -1,8 +1,8 @@
-package com.example.firebase.services
+package com.example.firebase.feature_fridge.domain
 
 import android.util.Log
 import android.widget.TextView
-import com.example.firebase.models.Fridge
+import com.example.firebase.feature_fridge.data.Fridge
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
@@ -16,7 +16,8 @@ class FridgeFBService {
     val TAG = "FridgeFBService"
 
     companion object {
-        var instance = FridgeFBService()
+        var instance =
+            FridgeFBService()
     }
 
     fun addFridge(fridge: Fridge){

@@ -1,12 +1,11 @@
-package com.example.firebase.fragments.fridgeComponents
+package com.example.firebase.feature_fridge.presentation.fridgelist.recycleview
 
 import android.util.Log
 import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.firebase.R
-import com.example.firebase.models.Fridge
-import com.example.firebase.models.Slot
+import com.example.firebase.feature_fridge.data.Fridge
 
 class FridgeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 

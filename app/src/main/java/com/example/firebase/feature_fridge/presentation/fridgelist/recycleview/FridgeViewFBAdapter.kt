@@ -1,13 +1,12 @@
-package com.example.firebase.fragments.fridgeComponents
+package com.example.firebase.feature_fridge.presentation.fridgelist.recycleview
 
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.firebase.R
-import com.example.firebase.fragments.SlotsFragment
-import com.example.firebase.models.Fridge
-import com.example.firebase.services.FridgeFBService
+import com.example.firebase.feature_fridge.presentation.fridgedetail.SlotsFragment
+import com.example.firebase.feature_fridge.data.Fridge
 import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.firebase.ui.database.FirebaseRecyclerOptions
 
@@ -26,7 +25,12 @@ class FridgeViewFBAdapter(opt : FirebaseRecyclerOptions<Fridge>, val fragment: F
             fragment.fragmentManager!!
                 .beginTransaction()
                 .addToBackStack("SlotsFragment")
-                .replace(R.id.fridgeEditorSlots, SlotsFragment(model!!, getRef(position).key, selectedBottle ), "SlotsFragment" )
+                .replace(R.id.fridgeEditorSlots,
+                    SlotsFragment(
+                        model!!,
+                        getRef(position).key,
+                        selectedBottle
+                    ), "SlotsFragment" )
                 .commit()
         }
     }

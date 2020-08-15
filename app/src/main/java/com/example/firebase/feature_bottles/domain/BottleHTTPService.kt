@@ -1,9 +1,8 @@
-package com.example.firebase.services
+package com.example.firebase.feature_bottles.domain
 
-import android.widget.Toast
 import com.example.firebase.BottleJson
 import com.example.firebase.FireBaseApp
-import com.example.firebase.models.Bottle
+import com.example.firebase.feature_bottles.data.model.Bottle
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

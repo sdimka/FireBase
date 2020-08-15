@@ -1,4 +1,4 @@
-package com.example.firebase.fragments.slotComponents
+package com.example.firebase.feature_fridge.presentation.slotComponents
 
 import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
@@ -7,9 +7,9 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.firebase.R
-import com.example.firebase.models.Fridge
-import com.example.firebase.models.Slot
-import com.example.firebase.services.FridgeFBService
+import com.example.firebase.feature_fridge.data.Fridge
+import com.example.firebase.feature_fridge.data.Slot
+import com.example.firebase.feature_fridge.domain.FridgeFBService
 
 class SlotViewAdapter (val fridge: Fridge, val fridgeRef: String?, val selectedBottle: String?) : RecyclerView.Adapter<SlotViewHolder>(){
 
