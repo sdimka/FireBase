@@ -1,4 +1,4 @@
-package com.example.firebase.fragments
+package com.example.firebase.feature_fridge.presentation
 
 import android.os.Bundle
 import android.view.LayoutInflater

@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">FireBase</string>
+    <string name="hint_email">email</string>
+    <string name="hint_password">password</string>
+    <string name="sign_in">Login</string>
+    <string name="sign_out">Logout</string>
+    <string name="login_title">Please login</string>
 </resources>

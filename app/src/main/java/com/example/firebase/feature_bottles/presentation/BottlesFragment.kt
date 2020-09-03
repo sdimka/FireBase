@@ -1,6 +1,7 @@
 package com.example.firebase.feature_bottles.presentation
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,7 +18,8 @@ import kotlinx.android.synthetic.main.bottle_editor.*
 
 class BottlesFragment: Fragment() {
 
-    val bottleList = arrayListOf<Bottle>()
+    private val bottleList = arrayListOf<Bottle>()
+    private val TAG = "BottlesFragment"
 
 //    val bs = BottleFBService.instance
 
@@ -37,7 +39,6 @@ class BottlesFragment: Fragment() {
         val query = FirebaseDatabase.getInstance()
             .reference
             .child("Bottles")
-
 
         val options: FirebaseRecyclerOptions<Bottle> =
             FirebaseRecyclerOptions.Builder<Bottle>()

@@ -7,9 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.firebase.R
-import com.example.firebase.fragments.FridgeInfo
-import com.example.firebase.fragments.FridgeWineSelector
-import com.example.firebase.fragments.SelectedWineChanged
 import com.example.firebase.feature_fridge.presentation.fridgedetail.SlotsFragment
 import com.example.firebase.feature_fridge.presentation.fridgelist.recycleview.FridgeViewFBAdapter
 import com.example.firebase.feature_fridge.data.Fridge
@@ -59,7 +56,7 @@ class FridgeFragment : Fragment(),
         }
 
         fridgeEditorAdd.setOnClickListener {
-            activity!!.supportFragmentManager
+            requireActivity().supportFragmentManager
                 .beginTransaction()
                 .addToBackStack("FridgeInfo")
                 .replace(R.id.fridgeEditorFridgeInfo,
@@ -68,7 +65,7 @@ class FridgeFragment : Fragment(),
         }
 
         fridgeEditorWineSelect.setOnClickListener {
-            activity!!.supportFragmentManager
+            requireActivity().supportFragmentManager
                 .beginTransaction()
                 .addToBackStack("WineSelector")
                 .replace(R.id.fridgeEditorFridgeInfo,

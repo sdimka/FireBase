@@ -10,6 +10,7 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
 class FridgeFBService {
+
     val databaseReference = Firebase.database.reference
     val fridgeRef = databaseReference.child("Fridge")
 
@@ -29,7 +30,6 @@ class FridgeFBService {
     }
 
     fun getBusySlotCount(fridgeKey: String?, view: TextView){
-        Log.d(TAG, fridgeKey.toString())
 
         val query = fridgeRef.child(fridgeKey!!).child("slots")
         query.addValueEventListener(object : ValueEventListener {
