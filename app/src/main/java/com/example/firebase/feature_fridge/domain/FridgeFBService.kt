@@ -50,7 +50,7 @@ class FridgeFBService {
         })
     }
 
-    fun getBusyBottleSlotCount(fridgeKey: String, bootleKey: String): Int {
+    fun getBusyBottleSlotCount(fridgeKey: String, bottleKey: String): Int {
         return 42
     }
 }

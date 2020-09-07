@@ -21,11 +21,7 @@ class AuthViewModel: ViewModel() {
 
     val formErrors = ObservableArrayList<FormErrors>()
 
-    private lateinit var auth: FirebaseAuth
-
-    init {
-        auth = Firebase.auth
-    }
+    private var auth: FirebaseAuth = Firebase.auth
 
     fun checkCurrState(){
         user.value = auth.currentUser
@@ -55,10 +51,10 @@ class AuthViewModel: ViewModel() {
                 error.value = "Authentication failed."
             }
         }
-
     }
 
     fun signOut(){
+        user.value = null
         auth.signOut()
     }
 
