@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_bottle"
+        android:name="com.example.firebase.feature_bottles.presentation.BottlesFragment"
+        android:label="BottlesFragment" />
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.firebase.feature_home.presentation.HomeFragment"
+        android:label="HomeFragment" />
+    <fragment
+        android:id="@+id/nav_food"
+        android:name="com.example.firebase.feature_food.presentation.FoodCardFragment"
+        android:label="FoodCardFragment" />
+    <fragment
+        android:id="@+id/nav_fridges"
+        android:name="com.example.firebase.feature_fridge.presentation.FridgeFragment"
+        android:label="FridgeFragment" />
+</navigation>

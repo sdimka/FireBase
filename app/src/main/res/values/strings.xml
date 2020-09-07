@@ -7,4 +7,8 @@
     <string name="login_title">Please login</string>
     <string name="skip">Skip</string>
     <string name="label_activity_main">MainActivity</string>
+    <string name="menu_bottle">Бутылки</string>
+    <string name="menu_food">Еда</string>
+    <string name="menu_fridges">Холодильники</string>
+    <string name="menu_home">Домой</string>
 </resources>

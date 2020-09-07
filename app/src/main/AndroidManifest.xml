@@ -14,7 +14,8 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".feature_auth.presentation.AuthActivity"
-            android:screenOrientation="landscape">
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,7 +25,8 @@
 
         <activity
             android:name=".MainActivity"
-            android:label="@string/label_activity_main" />
+            android:label="@string/label_activity_main"
+            android:theme="@style/AppTheme.NoActionBar"/>
 
     </application>
 

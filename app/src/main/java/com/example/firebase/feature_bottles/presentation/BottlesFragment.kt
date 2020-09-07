@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.firebase.feature_bottles.presentation.bottledetail.BottleItemEditor
 import com.example.firebase.R
@@ -21,6 +22,8 @@ class BottlesFragment: Fragment() {
     private val bottleList = arrayListOf<Bottle>()
     private val TAG = "BottlesFragment"
 
+    private lateinit var viewModel: BottleViewModel
+
 //    val bs = BottleFBService.instance
 
     override fun onCreateView(
@@ -29,7 +32,7 @@ class BottlesFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 //        return super.onCreateView(inflater, container, savedInstanceState)
-
+        viewModel = ViewModelProvider(requireActivity()).get(BottleViewModel::class.java)
         return inflater.inflate(R.layout.bottle_editor, container, false)
     }
 
@@ -52,7 +55,7 @@ class BottlesFragment: Fragment() {
                 this
             ) { item ->
 
-                activity!!.supportFragmentManager
+                requireActivity().supportFragmentManager
                     .beginTransaction()
                     .replace(
                         R.id.bottleEditorFrameContainer,
