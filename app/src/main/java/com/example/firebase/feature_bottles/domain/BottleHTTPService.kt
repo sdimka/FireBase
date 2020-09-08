@@ -32,10 +32,7 @@ class BottleHTTPService {
 //                        bottleList.clear()
                         var bottleJsonList = response.body()
                         bottleJsonList!!.forEach { bottleJson:
-                                                   BottleJson -> bottleList.add(
-                            Bottle(
-                                bottleJson
-                            )
+                                                   BottleJson -> bottleList.add(Bottle(bottleJson)
                         ) }
 //                        recyclerBottle.adapter?.notifyDataSetChanged()
 

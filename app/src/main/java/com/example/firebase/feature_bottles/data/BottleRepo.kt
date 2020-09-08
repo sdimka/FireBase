@@ -1,5 +1,6 @@
 package com.example.firebase.feature_bottles.data
 
+import com.example.firebase.R
 import com.example.firebase.feature_bottles.data.model.Bottle
 
 
@@ -8,48 +9,88 @@ object BottleRepo {
 
     init {
 
-//        items.add(Bottle("Рислинг", 2019, 13.5,1, false,
-////            false, 1, 2, listOf<Int>(4,2,3)))
-////        items.add(Bottle("Вионье", 2019, 13.7,1, false,
-////            false, 1, 2, listOf<Int>(3,11,9)))
-////        items.add(Bottle("Мускат", 2019, 14.0,1, false,
-////            false, 1, 2, listOf<Int>(11,8,13,14)))
-////        items.add(Bottle("Бленд", 2019, 13.7,0, false,
-////            true, 1, 2, listOf<Int>(7,5,1)))
+        items.add(
+            Bottle(
+            "-ME454GXYBOwGVo66qUX",
+            "Рислинг",
+            2019,
+            13.5,
+            1,
+            sparkling = false,
+            blend = false,
+            smallImg = R.drawable.bottle,
+            bigImg = R.drawable.bottle,
+            bottleImage = "R.drawable.bottle",
+            bottleCard = R.drawable.bottle,
+            backImage = R.drawable.bottle,
+            foodCombines = listOf(4, 2, 3)
+            )
+        )
 
         items.add(
             Bottle(
-                "1",
-                "Рислинг",
-                "13.5,1",
-                "URL"
-            )
-        )
-        items.add(
-            Bottle(
-                "2",
+                "-ME454GmQQ8HX2gx5FyV",
                 "Вионье",
-                "13.5,1",
-                "URL"
+                2019,
+                13.7,
+                1,
+                sparkling = false,
+                blend = false,
+                smallImg = R.drawable.bottle,
+                bigImg = R.drawable.bottle,
+                bottleImage = "R.drawable.bottle",
+                bottleCard = R.drawable.bottle,
+                backImage = R.drawable.bottle,
+                foodCombines = listOf(3, 11, 9)
             )
         )
         items.add(
             Bottle(
-                "3",
+                "-ME454GnPOI5OhtOyDuT",
                 "Мускат",
-                "13.5,1",
-                "URL"
+                2019,
+                14.0,
+                1,
+                sparkling = false,
+                blend = false,
+                smallImg = R.drawable.bottle,
+                bigImg = R.drawable.bottle,
+                bottleImage = "R.drawable.bottle",
+                bottleCard = R.drawable.bottle,
+                backImage = R.drawable.bottle,
+                foodCombines = listOf(11, 8, 13, 14)
             )
         )
         items.add(
             Bottle(
-                "4",
-                "Бленд",
-                "13.5,1",
-                "URL"
+                "-ME454GnPOI5OhtOyDuU",
+                "Бленд", 2019, 13.7, 0,
+                sparkling = false,
+                blend = true,
+                smallImg = R.drawable.bottle,
+                bigImg = R.drawable.bottle,
+                bottleImage = "R.drawable.bottle",
+                bottleCard = R.drawable.bottle,
+                backImage = R.drawable.bottle,
+                foodCombines = listOf(7, 5, 1)
             )
         )
-
-
+        items.add(
+            Bottle(
+                "-ME45GaXoLs8RAP9_0aM",
+                "Пти Мансен",
+                2019,
+                13.5,
+                1,
+                sparkling = false,
+                blend = false,
+                smallImg = R.drawable.bottle,
+                bigImg = R.drawable.bottle,
+                bottleImage = "R.drawable.bottle",
+                bottleCard = R.drawable.bottle,
+                backImage = R.drawable.bottle,
+                foodCombines = listOf(10, 6, 12)
+            )
+        )
     }
 }

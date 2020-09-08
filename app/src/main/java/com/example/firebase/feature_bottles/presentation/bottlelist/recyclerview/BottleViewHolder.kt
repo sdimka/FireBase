@@ -24,15 +24,17 @@ class BottleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
 
     fun bind(item: Bottle){
-        tView1?.setText(item.id.toString())
+        tView1?.setText(item.refID.toString())
         tView2?.setText(item.name)
-        tView3?.setText(item.descripton)
+        tView3?.setText(item.year.toString())
 
-        Picasso.get()
-            .load(item.img)
-            .placeholder(R.drawable.ic_launcher_foreground)
-            .error(R.drawable.ic_baseline_error_outline_24)
-            .into(iView1)
+        item.bigImg?.let {
+            Picasso.get()
+                .load(it)
+                .placeholder(R.drawable.ic_launcher_foreground)
+                .error(R.drawable.ic_baseline_error_outline_24)
+                .into(iView1)
+        }
     }
 
 }

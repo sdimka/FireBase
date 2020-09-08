@@ -22,7 +22,7 @@ class BottleViewFBAdapter(opt : FirebaseRecyclerOptions<Bottle>,
 
     override fun onBindViewHolder(holder: BottleViewHolder, position: Int, model: Bottle) {
         holder.bind(model)
-        model.id = getRef(position).key
+        model.refID = getRef(position).key
 
         holder.itemView.setOnClickListener{
             listener(model)

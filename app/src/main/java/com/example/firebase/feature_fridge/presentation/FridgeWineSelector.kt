@@ -16,7 +16,7 @@ import java.lang.ClassCastException
 
 class FridgeWineSelector: Fragment() {
 
-    var selectedWineChanged: SelectedWineChanged? = null
+    private var selectedWineChanged: SelectedWineChanged? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -25,7 +25,7 @@ class FridgeWineSelector: Fragment() {
     ): View? {
 
         try {
-            selectedWineChanged = fragmentManager!!.findFragmentByTag("FridgeFragment") as SelectedWineChanged
+            selectedWineChanged = parentFragmentManager.findFragmentByTag("FridgeFragment") as SelectedWineChanged
         } catch (e: ClassCastException){
             throw ClassCastException(
                 activity.toString() + " must implement onSomeEventListener"
@@ -56,7 +56,7 @@ class FridgeWineSelector: Fragment() {
                 this
             ) { item ->
 
-                selectedWineChanged?.changed(item.id)
+                selectedWineChanged?.changed(item.refID)
 //            activity!!.supportFragmentManager
 //                .beginTransaction()
 //                .replace(
@@ -73,9 +73,9 @@ class FridgeWineSelector: Fragment() {
         }
 
         wineSelectorClose.setOnClickListener {
-            val fragment = fragmentManager!!.findFragmentByTag("WineSelector");
+            val fragment = parentFragmentManager.findFragmentByTag("WineSelector")
             if(fragment != null){
-                fragmentManager!!.beginTransaction()
+                parentFragmentManager.beginTransaction()
                     .remove(fragment)
                     .commit();}
         }

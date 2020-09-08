@@ -49,19 +49,14 @@ class BottlesFragment: Fragment() {
                 .setLifecycleOwner(this)
                 .build()
 
-        val bAdapter =
-            BottleViewFBAdapter(
-                options,
-                this
-            ) { item ->
-
+        val bAdapter = BottleViewFBAdapter(options, this) { item ->
                 requireActivity().supportFragmentManager
                     .beginTransaction()
                     .replace(
                         R.id.bottleEditorFrameContainer,
                         BottleItemEditor(
                             item,
-                            item.id
+                            item.refID
                         ),
                         "BottleItemEditor"
                     )
