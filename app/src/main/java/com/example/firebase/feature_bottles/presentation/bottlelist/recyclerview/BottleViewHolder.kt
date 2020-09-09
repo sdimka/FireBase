@@ -8,7 +8,7 @@ import com.example.firebase.R
 import com.example.firebase.feature_bottles.data.model.Bottle
 import com.squareup.picasso.Picasso
 
-class BottleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+class BottleViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 
     var tView1 : TextView? = null
     var tView2 : TextView? = null
@@ -28,13 +28,20 @@ class BottleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         tView2?.setText(item.name)
         tView3?.setText(item.year.toString())
 
-        item.bigImg?.let {
+        if (item.bottleImage != null) {
             Picasso.get()
-                .load(it)
+                .load(item.bottleImage)
                 .placeholder(R.drawable.ic_launcher_foreground)
                 .error(R.drawable.ic_baseline_error_outline_24)
                 .into(iView1)
+        } else {
+                Picasso.get()
+                    .load(R.drawable.ic_no_image1)
+                    .placeholder(R.drawable.ic_no_image1)
+                    .into(iView1)
+
         }
+
     }
 
 }

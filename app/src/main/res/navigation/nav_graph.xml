@@ -8,7 +8,11 @@
     <fragment
         android:id="@+id/nav_bottle"
         android:name="com.example.firebase.feature_bottles.presentation.BottlesFragment"
-        android:label="BottlesFragment" />
+        android:label="BottlesFragment" >
+        <action
+            android:id="@+id/action_nav_bottle_to_imagesListFragment"
+            app:destination="@id/imagesListFragment" />
+    </fragment>
     <fragment
         android:id="@+id/nav_home"
         android:name="com.example.firebase.feature_home.presentation.HomeFragment"
@@ -21,4 +25,8 @@
         android:id="@+id/nav_fridges"
         android:name="com.example.firebase.feature_fridge.presentation.FridgeFragment"
         android:label="FridgeFragment" />
+    <fragment
+        android:id="@+id/imagesListFragment"
+        android:name="com.example.firebase.feature_bottles.presentation.images_list.ImagesListFragment"
+        android:label="ImagesListFragment" />
 </navigation>

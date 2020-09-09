@@ -10,11 +10,14 @@ import android.view.ViewGroup
 import android.webkit.MimeTypeMap
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import com.example.firebase.R
 import com.example.firebase.feature_bottles.data.model.Bottle
 import com.example.firebase.feature_bottles.domain.BottleFBService
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import com.google.firebase.storage.StorageTask
+import com.google.firebase.storage.UploadTask
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.bottle_item_editor.*
 
@@ -23,6 +26,7 @@ class BottleItemEditor(val bottle: Bottle, val key: String?): Fragment() {
     private var img_req = 1
     private lateinit var imgUri: Uri
     private lateinit var storageRef: StorageReference
+    private lateinit var uploadTask: StorageTask<UploadTask.TaskSnapshot>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,22 +54,30 @@ class BottleItemEditor(val bottle: Bottle, val key: String?): Fragment() {
         }
 
         butt_upload.setOnClickListener {
-            uploadFile()
+            if (::uploadTask.isInitialized && uploadTask.isInProgress){
+                Toast.makeText(requireContext(), "Уже загружаем!", Toast.LENGTH_SHORT).show()
+            } else{
+                uploadFile()
+            }
         }
 
-        butt_show_content.setOnClickListener {
+        butt_show_content.setOnClickListener (
+            Navigation.createNavigateOnClickListener(R.id.imagesListFragment, null))
 
-        }
+    }
+
+    private fun openImagesList() {
+
     }
 
     private fun uploadFile() {
-        if (imgUri != null) {
-            var fileRef = storageRef.child(
+        if (::imgUri.isInitialized) {
+            val fileRef = storageRef.child(
                 System.currentTimeMillis().toString() +
                         "." + getFileExtension(imgUri)
             )
 
-            fileRef.putFile(imgUri)
+            uploadTask = fileRef.putFile(imgUri)
                 .addOnSuccessListener {
                     progress_bar_upload.progress = 0
                     Toast.makeText(requireContext(), "Загружено!", Toast.LENGTH_SHORT).show()
@@ -85,7 +97,6 @@ class BottleItemEditor(val bottle: Bottle, val key: String?): Fragment() {
                     progress_bar_upload.progress = progress.toInt()
                     progress_bar_upload.elevation = 2F
                 }
-
         } else {
             Toast.makeText(requireContext(), "Выбрать файл!", Toast.LENGTH_SHORT).show()
         }
@@ -109,7 +120,7 @@ class BottleItemEditor(val bottle: Bottle, val key: String?): Fragment() {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == img_req && resultCode == -1 && data != null && data.data != null){
             imgUri = data.data!!
-            Picasso.get().load(imgUri).into(image_holder)
+            Picasso.get().load(imgUri).into(image_view)
         }
     }
 

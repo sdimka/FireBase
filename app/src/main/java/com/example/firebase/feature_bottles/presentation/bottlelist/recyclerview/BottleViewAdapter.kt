@@ -7,14 +7,10 @@ import com.example.firebase.R
 import com.example.firebase.feature_bottles.data.model.Bottle
 
 class BottleViewAdapter (val list: List<Bottle>): RecyclerView.Adapter<BottleViewHolder>() {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BottleViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        return BottleViewHolder(
-            inflater.inflate(
-                R.layout.bottle_item,
-                parent,
-                false
-            )
+        return BottleViewHolder(inflater.inflate(R.layout.bottle_item, parent, false)
         )
     }
 
