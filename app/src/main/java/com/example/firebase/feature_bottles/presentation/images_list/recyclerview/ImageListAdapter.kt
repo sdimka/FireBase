@@ -4,8 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.firebase.R
+import com.example.firebase.feature_bottles.data.model.ImageInfo
 
-class ImageListAdapter(val list: List<String>): RecyclerView.Adapter<ImageListItem>() {
+class ImageListAdapter(val list: List<ImageInfo>): RecyclerView.Adapter<ImageListItem>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageListItem {
         val inflater = LayoutInflater.from(parent.context)

@@ -6,7 +6,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.firebase.R
 import com.example.firebase.feature_bottles.data.model.Bottle
 
-class BottleViewAdapter (val list: List<Bottle>): RecyclerView.Adapter<BottleViewHolder>() {
+class BottleViewAdapter (): RecyclerView.Adapter<BottleViewHolder>() {
+
+    private var bottleList = listOf<Bottle>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BottleViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -15,17 +17,22 @@ class BottleViewAdapter (val list: List<Bottle>): RecyclerView.Adapter<BottleVie
     }
 
     override fun getItemCount(): Int {
-        return list.size
+        return bottleList.size
     }
 
     override fun onBindViewHolder(holder: BottleViewHolder, position: Int) {
-        val rec : Bottle = list[position]
+        val rec : Bottle = bottleList[position]
         holder.bind(rec)
     }
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         super.onAttachedToRecyclerView(recyclerView)
 
+    }
+
+    fun setList(list: List<Bottle>){
+        bottleList = list
+        notifyDataSetChanged()
     }
 
 }
