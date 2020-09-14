@@ -10,10 +10,12 @@ import android.view.ViewGroup
 import android.webkit.MimeTypeMap
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.example.firebase.R
 import com.example.firebase.feature_bottles.data.model.Bottle
 import com.example.firebase.feature_bottles.domain.BottleFBService
+import com.example.firebase.feature_bottles.presentation.BottleViewModel
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.StorageTask
@@ -21,39 +23,69 @@ import com.google.firebase.storage.UploadTask
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.bottle_item_editor.*
 
-class BottleItemEditor(val bottle: Bottle, val key: String?): Fragment() {
+class BottleItemEditor: Fragment() {
 
     private var img_req = 1
     private lateinit var imgUri: Uri
     private lateinit var storageRef: StorageReference
     private lateinit var uploadTask: StorageTask<UploadTask.TaskSnapshot>
+    private lateinit var mBottle: Bottle
+
+    private lateinit var viewModel: BottleViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
+        viewModel = ViewModelProvider(requireActivity()).get(BottleViewModel::class.java)
         storageRef = FirebaseStorage.getInstance().getReference("images")
         return inflater.inflate(R.layout.bottle_item_editor, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        bottleItemName.setText(bottle.name)
-        bottleItemYear.setText(bottle.year.toString())
-        bottleItemFBKey.text = key
+//        bottleItemName.setText(bottle.name)
+//        bottleItemYear.setText(bottle.year.toString())
+//        bottleItemFBKey.text = key
+
+        viewModel.getBottle().observe(viewLifecycleOwner){
+            mBottle = it
+            bottleItemName.setText(it.name)
+            bottleItemYear.setText(it.year.toString())
+            bottleItemFBKey.setText(it.refID)
+
+            if (it.bottleImage != null) {
+                Picasso.get()
+                    .load(it.bottleImage)
+                    .placeholder(R.drawable.ic_launcher_foreground)
+                    .error(R.drawable.ic_baseline_error_outline_24)
+                    .into(image_view)
+            } else {
+                Picasso.get()
+                    .load(R.drawable.ic_no_image1)
+                    .placeholder(R.drawable.ic_no_image1)
+                    .into(image_view)
+
+            }
+
+        }
 
         bottleItemSave.setOnClickListener {
-            bottle.name = bottleItemName.text.toString()
-            BottleFBService.instance.upDate(key!!, bottle)
+            mBottle.apply {
+                refID = bottleItemFBKey.text.toString()
+                name = bottleItemName.text.toString()
+                year = bottleItemYear.text.toString().toInt()
+            }
+            viewModel.saveBottle()
         }
 
 
-        butt_sel_file.setOnClickListener {
+        buttn_sel_file.setOnClickListener {
             fileSelector()
         }
 
-        butt_upload.setOnClickListener {
+        buttn_upload.setOnClickListener {
             if (::uploadTask.isInitialized && uploadTask.isInProgress){
                 Toast.makeText(requireContext(), "Уже загружаем!", Toast.LENGTH_SHORT).show()
             } else{
@@ -61,7 +93,7 @@ class BottleItemEditor(val bottle: Bottle, val key: String?): Fragment() {
             }
         }
 
-        butt_show_content.setOnClickListener (
+        buttn_show_content.setOnClickListener (
             Navigation.createNavigateOnClickListener(R.id.imagesListFragment, null))
 
     }
@@ -83,8 +115,9 @@ class BottleItemEditor(val bottle: Bottle, val key: String?): Fragment() {
                     Toast.makeText(requireContext(), "Загружено!", Toast.LENGTH_SHORT).show()
 
                     fileRef.downloadUrl.addOnSuccessListener {
-                        bottle.bottleImage = it.toString()
-                        BottleFBService.instance.upDate(key!!, bottle)
+                        mBottle.bottleImage = it.toString()
+                        viewModel.saveBottle()
+//                        BottleFBService.instance.upDate(key!!, bottle)
                     }
 
                 }

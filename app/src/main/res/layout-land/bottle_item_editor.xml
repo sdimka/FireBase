@@ -1,87 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:padding="10dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/bottleItemName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
 
-    <EditText
-        android:id="@+id/bottleItemYear"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="2019"
-        app:layout_constraintStart_toEndOf="@+id/bottleItemName"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp">
 
-    <TextView
-        android:id="@+id/bottleItemFBKey"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/bottleItemName"
-        app:layout_constraintStart_toStartOf="parent"/>
 
-    <!-- Image begin -->
+        <EditText
+            android:id="@+id/bottleItemName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/butt_sel_file"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Select file"
-        app:layout_constraintBottom_toTopOf="@+id/bottleItemSave"
-        app:layout_constraintStart_toStartOf="parent" />
+        <EditText
+            android:id="@+id/bottleItemYear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2019"
+            app:layout_constraintStart_toEndOf="@+id/bottleItemName"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/butt_upload"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Upload"
-        app:layout_constraintBottom_toTopOf="@+id/bottleItemSave"
-        app:layout_constraintStart_toEndOf="@+id/butt_sel_file" />
+        <TextView
+            android:id="@+id/bottleItemFBKey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bottleItemName" />
 
-    <Button
-        android:id="@+id/butt_show_content"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Show rem cont"
-        app:layout_constraintBottom_toTopOf="@+id/bottleItemSave"
-        app:layout_constraintStart_toEndOf="@+id/butt_upload" />
+        <!-- Image begin -->
 
-    <ProgressBar
-        android:id="@+id/progress_bar_upload"
-        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:elevation="2dp"
-        app:layout_constraintBottom_toTopOf="@+id/bottleItemSave"
-        app:layout_constraintEnd_toEndOf="@+id/butt_upload"
-        app:layout_constraintStart_toEndOf="@+id/butt_sel_file" />
+        <Button
+            android:id="@+id/buttn_sel_file"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select file"
+            app:layout_constraintBottom_toTopOf="@+id/bottleItemSave"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageView
-        android:id="@+id/image_view"
-        android:layout_width="0dp"
-        android:layout_height="200dp"
-        android:background="#C7D1C5"
-        app:layout_constraintBottom_toTopOf="@+id/butt_sel_file"
-        app:layout_constraintEnd_toEndOf="@+id/butt_show_content"
-        app:layout_constraintStart_toStartOf="@+id/butt_sel_file" />
+        <Button
+            android:id="@+id/buttn_upload"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Upload"
+            app:layout_constraintBottom_toTopOf="@+id/bottleItemSave"
+            app:layout_constraintStart_toEndOf="@+id/buttn_sel_file" />
 
-    <!-- Image end -->
-    <Button
-        android:id="@+id/bottleItemSave"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="SAVE CHANGES"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-    
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/buttn_show_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Show rem cont"
+            app:layout_constraintBottom_toTopOf="@+id/bottleItemSave"
+            app:layout_constraintStart_toEndOf="@+id/buttn_upload" />
+
+        <ProgressBar
+            android:id="@+id/progress_bar_upload"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="2dp"
+            app:layout_constraintBottom_toTopOf="@+id/bottleItemSave"
+            app:layout_constraintEnd_toEndOf="@+id/buttn_upload"
+            app:layout_constraintStart_toEndOf="@+id/buttn_sel_file" />
+
+        <ImageView
+            android:id="@+id/image_view"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:background="#C7D1C5"
+            android:layout_marginTop="25dp"
+            app:layout_constraintBottom_toTopOf="@+id/buttn_sel_file"
+            app:layout_constraintEnd_toEndOf="@+id/buttn_show_content"
+            app:layout_constraintStart_toStartOf="@+id/buttn_sel_file"
+            app:layout_constraintTop_toBottomOf="@+id/bottleItemFBKey" />
+
+        <!-- Image end -->
+        <Button
+            android:id="@+id/bottleItemSave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SAVE CHANGES"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

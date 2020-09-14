@@ -1,7 +1,6 @@
 package com.example.firebase.feature_bottles.presentation
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,11 +9,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.firebase.feature_bottles.presentation.bottledetail.BottleItemEditor
 import com.example.firebase.R
-import com.example.firebase.feature_bottles.presentation.bottlelist.recyclerview.BottleViewFBAdapter
 import com.example.firebase.feature_bottles.data.model.Bottle
 import com.example.firebase.feature_bottles.presentation.bottlelist.recyclerview.BottleViewAdapter
-import com.firebase.ui.database.FirebaseRecyclerOptions
-import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.bottle_editor.*
 
 
@@ -53,22 +49,21 @@ class BottlesFragment: Fragment() {
         val bAdapter = BottleViewAdapter()
 
 //        { item ->
-//                requireActivity().supportFragmentManager
-//                    .beginTransaction()
-//                    .replace(
-//                        R.id.bottleEditorFrameContainer,
-//                        BottleItemEditor(
-//                            item,
-//                            item.refID
-//                        ),
-//                        "BottleItemEditor"
-//                    )
-//                    .commit()
+                requireActivity().supportFragmentManager
+                    .beginTransaction()
+                    .replace(
+                        R.id.bottleEditorFrameContainer,
+                        BottleItemEditor(),
+                        "BottleItemEditor"
+                    )
+                    .commit()
 //            }
-
-        viewModel.getBottles().observe(viewLifecycleOwner){
+        bAdapter.setHolderClickListener { viewModel.selectBottle(it) }
+        viewModel.getBottlesList().observe(viewLifecycleOwner){
             bAdapter.setList(it)
         }
+
+
 
         recyclerBottle.apply {
             layoutManager = LinearLayoutManager(context)
