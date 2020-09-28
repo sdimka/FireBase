@@ -36,4 +36,11 @@
     </style>
 
     <color name="grey_500">#9E9E9E</color>
+
+    <style name="MyToolbarTheme"
+        parent="@style/ThemeOverlay.AppCompat.Dialog">
+        <item name="colorControlNormal">@color/colorWhite</item>
+        <item name="titleTextColor">@color/colorWhite</item>
+    </style>
+
 </resources>

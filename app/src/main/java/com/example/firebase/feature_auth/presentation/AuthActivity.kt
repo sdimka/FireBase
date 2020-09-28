@@ -3,7 +3,6 @@ package com.example.firebase.feature_auth.presentation
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.BindingAdapter
 import androidx.databinding.DataBindingUtil
@@ -14,7 +13,7 @@ import com.example.firebase.R
 import com.example.firebase.databinding.ActivityAuthBinding
 import com.google.android.material.textfield.TextInputLayout
 import kotlinx.android.synthetic.main.activity_auth.*
-import java.util.zip.Inflater
+
 
 class AuthActivity: AppCompatActivity() {
 

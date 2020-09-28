@@ -1,7 +1,5 @@
 package com.example.firebase.feature_auth.presentation
 
-import android.util.Log
-import android.widget.Toast
 import androidx.databinding.ObservableArrayList
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -42,7 +40,6 @@ class AuthViewModel: ViewModel() {
     fun signUp() {
 //        auth.createUser(email.value!!, password.value!!)
 //        auth = Firebase.auth
-        Log.d("AuthViewModel", email.value + " " + pass.value)
         auth.signInWithEmailAndPassword(email.value!!, pass.value!!)
             .addOnCompleteListener { task ->
             if (task.isSuccessful){

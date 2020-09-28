@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.firebase.feature_bottles.presentation.bottledetail.BottleItemEditor
 import com.example.firebase.R
 import com.example.firebase.feature_bottles.data.model.Bottle
+import com.example.firebase.feature_bottles.presentation.bottledetail.BottleItemEditorTabs
 import com.example.firebase.feature_bottles.presentation.bottlelist.recyclerview.BottleViewAdapter
 import kotlinx.android.synthetic.main.bottle_editor.*
 
@@ -48,22 +48,28 @@ class BottlesFragment: Fragment() {
 
         val bAdapter = BottleViewAdapter()
 
-//        { item ->
-                requireActivity().supportFragmentManager
-                    .beginTransaction()
-                    .replace(
-                        R.id.bottleEditorFrameContainer,
-                        BottleItemEditor(),
-                        "BottleItemEditor"
-                    )
-                    .commit()
-//            }
+//        requireActivity().supportFragmentManager
+//            .beginTransaction()
+//            .replace(
+//                R.id.bottleEditorFrameContainer,
+//                BottleItemEditor(),
+//                "BottleItemEditor"
+//            )
+//            .commit()
+
+        requireActivity().supportFragmentManager
+            .beginTransaction()
+            .replace(
+                R.id.bottleEditorFrameContainer,
+                BottleItemEditorTabs(),
+                "BottleTabsEditor"
+            )
+            .commit()
+
         bAdapter.setHolderClickListener { viewModel.selectBottle(it) }
-        viewModel.getBottlesList().observe(viewLifecycleOwner){
+        viewModel.getBottlesList().observe(viewLifecycleOwner) {
             bAdapter.setList(it)
         }
-
-
 
         recyclerBottle.apply {
             layoutManager = LinearLayoutManager(context)
