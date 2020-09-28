@@ -9,11 +9,18 @@ import com.example.firebase.R
 class Bottle(var refID: String? = null,
              var name: String? = null, var year: Int? = null,
              var alko: Number? = null, var color: Int? = null,
+             var place: String? = null, var grapeSort: String? = null,
+             var servingTemp: String? = null,
+             var ageYear: Int? = null,
+             var degustation: String? = null,
+             var vineyard: String? = null,
+             var production: String? = null,
              var sparkling: Boolean? = null, var blend: Boolean? = null,
              var smallImg: Int? = null, var bigImg: Int? = null,
              var bottleImage: String? = null, var bottleCard: Int? = null,
              var backImage: Int? = null,
-             var foodCombines: List<Int>? = null) {
+             var foodCombines: List<Int>? = null,
+             var foodCombText: String? = null ) {
 
 
 

@@ -10,7 +10,7 @@ import com.example.firebase.feature_bottles.domain.BottleFBService
 class BottleViewModel: ViewModel() {
 
     private lateinit var bottleList: MutableLiveData<List<Bottle>>
-    private var currBottle = MutableLiveData<Bottle>()
+    val currBottle = MutableLiveData<Bottle>()
 
     fun getBottlesList(): LiveData<List<Bottle>>{
         return BottleFBLiveData()
@@ -27,4 +27,5 @@ class BottleViewModel: ViewModel() {
     fun saveBottle(){
         BottleFBService.instance.upDate(currBottle.value!!.refID!!, currBottle.value!!)
     }
+
 }

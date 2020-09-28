@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.firebase"
-        minSdkVersion 21
+        minSdkVersion 24
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -62,9 +62,10 @@ dependencies {
     implementation 'com.google.firebase:firebase-storage:19.2.0'
 
     // Firebase Authentication (Kotlin)
-    implementation 'com.google.firebase:firebase-auth-ktx:19.3.2'
+    implementation 'com.google.firebase:firebase-auth-ktx:19.4.0'
 
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
+
 
     // Kotlin dependency on Navigation
     def nav_version = "2.3.0"
