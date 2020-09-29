@@ -6,6 +6,8 @@
     <data>
 
 <!--        <import type="com.example.firebase.feature_bottles.presentation.BottleViewModel" />-->
+        <import type="com.example.firebase.feature_bottles.presentation.bottledetail.Conversion"/>
+        <import type="com.example.firebase.feature_bottles.presentation.bottledetail.ConversionColor"/>
 
         <variable
             name="viewModel"
@@ -46,30 +48,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="Год"
-            app:layout_constraintEnd_toStartOf="@+id/textInputLayout8"
+            app:layout_constraintEnd_toStartOf="@+id/radioGroup"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/textInputLayout7"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:maxLength="10"
-                android:ems="4"
-                android:text='@={"" + viewModel.currBottle.year}'
-                android:textSize="12sp" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayout8"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="Цвет"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/textInputLayout6"
             app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -78,10 +59,62 @@
                 android:inputType="number"
                 android:maxLength="10"
                 android:ems="4"
-                android:text='@={"" + viewModel.currBottle.color}'
+                android:text='@={Conversion.INSTANCE.intToString(viewModel.currBottle.year, viewModel.currBottle.year)}'
                 android:textSize="12sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/textInputLayout6"
+            app:layout_constraintTop_toTopOf="parent"
+            android:checkedButton="@={ConversionColor.INSTANCE.intToID(viewModel.currBottle.color, viewModel.currBottle.color)}">
+
+        <RadioButton
+            android:id="@+id/radio_button_white"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Белое"/>
+        <RadioButton
+            android:id="@+id/radio_button_red"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Красное"/>
+        <RadioButton
+            android:id="@+id/radio_button_rose"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Розовое"/>
+
+        </RadioGroup>
+
+<!--        <com.google.android.material.textfield.TextInputLayout-->
+<!--            android:id="@+id/textInputLayout8"-->
+<!--            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:hint="Цвет"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintHorizontal_bias="0.5"-->
+<!--            app:layout_constraintStart_toEndOf="@+id/textInputLayout6"-->
+<!--            app:layout_constraintTop_toTopOf="parent">-->
+
+<!--            <com.google.android.material.textfield.TextInputEditText-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:inputType="number"-->
+<!--                android:maxLength="10"-->
+<!--                android:ems="4"-->
+<!--                android:text='@={Conversion.INSTANCE.intToString(viewModel.currBottle.color, viewModel.currBottle.color)}'-->
+<!--                android:textSize="12sp" />-->
+
+<!--        </com.google.android.material.textfield.TextInputLayout>-->
 
         <Button
             android:id="@+id/buttonSave"

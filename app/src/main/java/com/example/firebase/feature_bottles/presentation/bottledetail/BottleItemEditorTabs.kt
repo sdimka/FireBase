@@ -31,6 +31,4 @@ class BottleItemEditorTabs: Fragment() {
         tabLayout.setupWithViewPager(viewPager)
     }
 
-
-
 }
