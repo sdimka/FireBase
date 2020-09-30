@@ -3,6 +3,8 @@ package com.example.firebase.feature_food.presentation
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +13,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.firebase.R
+import com.example.firebase.feature_food.data.FoodCard
 import com.example.firebase.feature_food.presentation.recyclerview.FoodCardListAdapter
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.bottle_item_editor.*
@@ -22,8 +25,9 @@ class FoodCardFragment: Fragment() {
 
     private var img_big = 1
     private var img_icon = 2
-    private lateinit var bigImgURI: Uri
-    private lateinit var iconImgURI: Uri
+//    private lateinit var mFoodCard: FoodCard
+//    private lateinit var bigImgURI: Uri
+//    private lateinit var iconImgURI: Uri
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,9 +40,11 @@ class FoodCardFragment: Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
         val lAdapter = FoodCardListAdapter()
         lAdapter.setClickListener {
             viewModel.onCardSelect(it)
+            viewModel.clearChanges()
         }
         val manager = GridLayoutManager(requireContext(), 4)
 
@@ -53,8 +59,29 @@ class FoodCardFragment: Fragment() {
         }
 
         viewModel.currentCard().observe(viewLifecycleOwner){
-            text_card_name.setText(it.type)
+            setCurrentCard(it)
         }
+
+        button_save.isEnabled = false
+
+        viewModel.changesList().observe(viewLifecycleOwner){
+            button_save.isEnabled = it.isNotEmpty()
+        }
+
+        text_card_name.addTextChangedListener(object : TextWatcher{
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                viewModel.gotChanges(FoodCardViewModel.Changes.NAME, s.toString())
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+
+            }
+
+        })
 
         button_add.setOnClickListener {
             viewModel.newFoodCard()
@@ -65,6 +92,7 @@ class FoodCardFragment: Fragment() {
             viewModel.saveCard()
         }
 
+
         big_fc_image.setOnClickListener {
             fileSelector(img_big)
         }
@@ -74,21 +102,55 @@ class FoodCardFragment: Fragment() {
         }
     }
 
+    private fun setCurrentCard(foodCard: FoodCard?) {
+        if (foodCard != null) {
+            text_card_name.setText(foodCard.type)
+
+            if (foodCard.pict != null) {
+                Picasso.get()
+                    .load(foodCard.pict)
+                    .placeholder(R.drawable.ic_launcher_foreground)
+                    .error(R.drawable.ic_baseline_error_outline_24)
+                    .into(big_fc_image)
+            } else {
+                Picasso.get()
+                    .load(R.drawable.ic_no_image1)
+                    .placeholder(R.drawable.ic_no_image1)
+                    .into(big_fc_image)
+
+            }
+
+            if (foodCard.icon != null) {
+                Picasso.get()
+                    .load(foodCard.icon)
+                    .placeholder(R.drawable.ic_launcher_foreground)
+                    .error(R.drawable.ic_baseline_error_outline_24)
+                    .into(icon_fc_image)
+            } else {
+                Picasso.get()
+                    .load(R.drawable.ic_no_image1)
+                    .placeholder(R.drawable.ic_no_image1)
+                    .into(icon_fc_image)
+
+            }
+        }
+    }
+
     private fun fileSelector(type: Int) {
         val intent = Intent()
         intent.type = "image/*"
-        intent.setAction(Intent.ACTION_GET_CONTENT)
+        intent.action = Intent.ACTION_GET_CONTENT
         startActivityForResult(intent, type)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == img_big && resultCode == -1 && data != null && data.data != null){
-            bigImgURI = data.data!!
-            Picasso.get().load(bigImgURI).into(big_fc_image)
+            viewModel.gotChanges(FoodCardViewModel.Changes.BIG_IMG, data.data.toString())
+//            Picasso.get().load(mFoodCard.pict).into(big_fc_image)
         } else if (requestCode == img_icon && resultCode == -1 && data != null && data.data != null){
-            iconImgURI = data.data!!
-            Picasso.get().load(iconImgURI).into(icon_fc_image)
+            viewModel.gotChanges(FoodCardViewModel.Changes.ICON_IMG, data.data.toString())
+//            Picasso.get().load(mFoodCard.icon).into(icon_fc_image)
         }
     }
 }
