@@ -16,7 +16,6 @@ import com.example.firebase.R
 import com.example.firebase.feature_food.data.FoodCard
 import com.example.firebase.feature_food.presentation.recyclerview.FoodCardListAdapter
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.bottle_item_editor.*
 import kotlinx.android.synthetic.main.fragmet_food_card.*
 
 class FoodCardFragment: Fragment() {
@@ -88,7 +87,7 @@ class FoodCardFragment: Fragment() {
         }
 
         button_save.setOnClickListener {
-            viewModel.upDateCurrCard(text_card_name.text.toString())
+//            viewModel.upDateCurrCard(text_card_name.text.toString())
             viewModel.saveCard()
         }
 
@@ -147,10 +146,10 @@ class FoodCardFragment: Fragment() {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == img_big && resultCode == -1 && data != null && data.data != null){
             viewModel.gotChanges(FoodCardViewModel.Changes.BIG_IMG, data.data.toString())
-//            Picasso.get().load(mFoodCard.pict).into(big_fc_image)
+            Picasso.get().load(data.data.toString()).into(big_fc_image)
         } else if (requestCode == img_icon && resultCode == -1 && data != null && data.data != null){
             viewModel.gotChanges(FoodCardViewModel.Changes.ICON_IMG, data.data.toString())
-//            Picasso.get().load(mFoodCard.icon).into(icon_fc_image)
+            Picasso.get().load(data.data.toString()).into(icon_fc_image)
         }
     }
 }

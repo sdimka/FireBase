@@ -22,6 +22,7 @@ import com.google.firebase.storage.StorageTask
 import com.google.firebase.storage.UploadTask
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.bottle_item_editor.*
+import okhttp3.internal.wait
 
 class BottleItemEditor: Fragment() {
 
@@ -86,6 +87,7 @@ class BottleItemEditor: Fragment() {
         }
 
         buttn_upload.setOnClickListener {
+
             if (::uploadTask.isInitialized && uploadTask.isInProgress){
                 Toast.makeText(requireContext(), "Уже загружаем!", Toast.LENGTH_SHORT).show()
             } else{
