@@ -1,20 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    >
 
     <ImageView
         android:id="@+id/fc_icon"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_gravity="top|center"
         android:background="#938E8E"/>
+
+    <ImageView
+        android:id="@+id/checked_icon"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_gravity="top|center"
+        android:src="@drawable/ic_baseline_check_24"/>
 
     <TextView
         android:id="@+id/fc_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Bla-bla"/>
+        android:layout_marginTop="55dp"
+        android:layout_gravity="center_horizontal"
+        android:text="Bla-bla Bla-bla Bla-bla"
+        android:textAlignment="center" />
 
-</LinearLayout>
+</FrameLayout>

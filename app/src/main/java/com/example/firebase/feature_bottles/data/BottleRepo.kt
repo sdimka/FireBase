@@ -18,11 +18,11 @@ object BottleRepo {
             1,
             sparkling = false,
             blend = false,
-            smallImg = R.drawable.bottle,
-            bigImg = R.drawable.bottle,
+            smallImg = "R.drawable.bottle",
+            bigImg = "R.drawable.bottle",
             bottleImage = "R.drawable.bottle",
-            bottleCard = R.drawable.bottle,
-            backImage = R.drawable.bottle,
+            bottleCard = "R.drawable.bottle",
+            backImage = "R.drawable.bottle",
             foodCombines = arrayListOf("4", "2", "3")
             )
         )
@@ -36,11 +36,11 @@ object BottleRepo {
                 1,
                 sparkling = false,
                 blend = false,
-                smallImg = R.drawable.bottle,
-                bigImg = R.drawable.bottle,
+                smallImg = "R.drawable.bottle",
+                bigImg = "R.drawable.bottle",
                 bottleImage = "R.drawable.bottle",
-                bottleCard = R.drawable.bottle,
-                backImage = R.drawable.bottle,
+                bottleCard = "R.drawable.bottle",
+                backImage = "R.drawable.bottle",
                 foodCombines = arrayListOf("3", "11", "9")
             )
         )
@@ -53,11 +53,11 @@ object BottleRepo {
                 1,
                 sparkling = false,
                 blend = false,
-                smallImg = R.drawable.bottle,
-                bigImg = R.drawable.bottle,
+                smallImg = "R.drawable.bottle",
+                bigImg = "R.drawable.bottle",
                 bottleImage = "R.drawable.bottle",
-                bottleCard = R.drawable.bottle,
-                backImage = R.drawable.bottle,
+                bottleCard = "R.drawable.bottle",
+                backImage = "R.drawable.bottle",
                 foodCombines = arrayListOf("11", "8", "13", "14")
             )
         )
@@ -67,11 +67,11 @@ object BottleRepo {
                 "Бленд", 2019, 13.7, 0,
                 sparkling = false,
                 blend = true,
-                smallImg = R.drawable.bottle,
-                bigImg = R.drawable.bottle,
+                smallImg = "R.drawable.bottle",
+                bigImg = "R.drawable.bottle",
                 bottleImage = "R.drawable.bottle",
-                bottleCard = R.drawable.bottle,
-                backImage = R.drawable.bottle,
+                bottleCard = "R.drawable.bottle",
+                backImage = "R.drawable.bottle",
                 foodCombines = arrayListOf("7", "5", "1")
             )
         )
@@ -84,11 +84,11 @@ object BottleRepo {
                 1,
                 sparkling = false,
                 blend = false,
-                smallImg = R.drawable.bottle,
-                bigImg = R.drawable.bottle,
+                smallImg = "R.drawable.bottle",
+                bigImg = "R.drawable.bottle",
                 bottleImage = "R.drawable.bottle",
-                bottleCard = R.drawable.bottle,
-                backImage = R.drawable.bottle,
+                bottleCard = "R.drawable.bottle",
+                backImage = "R.drawable.bottle",
                 foodCombines = arrayListOf("10", "6", "12")
             )
         )

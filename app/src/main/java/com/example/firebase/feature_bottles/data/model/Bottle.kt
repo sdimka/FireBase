@@ -16,9 +16,9 @@ class Bottle(var refID: String? = null,
              var vineyard: String? = null,
              var production: String? = null,
              var sparkling: Boolean? = null, var blend: Boolean? = null,
-             var smallImg: Int? = null, var bigImg: Int? = null,
-             var bottleImage: String? = null, var bottleCard: Int? = null,
-             var backImage: Int? = null,
+             var smallImg: String? = null, var bigImg: String? = null,
+             var bottleImage: String? = null, var bottleCard: String? = null,
+             var backImage: String? = null,
              var foodCombines: ArrayList<String>? = null,
              var foodCombText: String? = null ) {
 
@@ -47,11 +47,11 @@ class Bottle(var refID: String? = null,
     1,
     sparkling = false,
     blend = false,
-    smallImg = R.drawable.bottle,
-    bigImg = R.drawable.bottle,
+    smallImg = "R.drawable.bottle",
+    bigImg = "R.drawable.bottle",
     bottleImage = "R.drawable.bottle",
-    bottleCard = R.drawable.bottle,
-    backImage = R.drawable.bottle,
+    bottleCard = "R.drawable.bottle",
+    backImage = "R.drawable.bottle",
     foodCombines = arrayListOf<String>("4", "2", "3")
     )
     {

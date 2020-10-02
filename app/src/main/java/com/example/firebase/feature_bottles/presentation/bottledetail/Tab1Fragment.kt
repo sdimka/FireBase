@@ -48,6 +48,7 @@ class Tab1Fragment: Fragment() {
         val fcAdapter = FoodCardListAdapter()
         fcAdapter.setClickListener {
             viewModel.onFoodCardSelect(it)
+            fcAdapter.notifyDataSetChanged()
         }
 
         val lManager = GridLayoutManager(requireContext(), 8)
@@ -65,6 +66,7 @@ class Tab1Fragment: Fragment() {
         viewModel.getBottle().observe(viewLifecycleOwner){
             binding.invalidateAll()
             fcAdapter.setCurrentBottle(it)
+            fcAdapter.notifyDataSetChanged()
         }
     }
 }

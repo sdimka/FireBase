@@ -39,7 +39,11 @@ class BottleViewModel: ViewModel() {
 
     fun onFoodCardSelect(foodCard: FoodCard) {
         if (currBottle.value?.foodCombines != null) {
-            foodCard.refId?.let { currBottle.value?.foodCombines?.add(it) }
+            if (currBottle.value?.foodCombines!!.contains(foodCard.refId!!)) {
+                 currBottle.value?.foodCombines?.remove(foodCard.refId!!)
+            } else {
+                currBottle.value?.foodCombines?.add(foodCard.refId!!)
+            }
         } else {
             currBottle.value?.foodCombines = arrayListOf<String>()
             foodCard.refId?.let { currBottle.value?.foodCombines?.add(it) }
