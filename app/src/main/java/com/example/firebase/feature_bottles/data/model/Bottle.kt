@@ -19,7 +19,7 @@ class Bottle(var refID: String? = null,
              var smallImg: Int? = null, var bigImg: Int? = null,
              var bottleImage: String? = null, var bottleCard: Int? = null,
              var backImage: Int? = null,
-             var foodCombines: List<Int>? = null,
+             var foodCombines: ArrayList<String>? = null,
              var foodCombText: String? = null ) {
 
 
@@ -52,7 +52,8 @@ class Bottle(var refID: String? = null,
     bottleImage = "R.drawable.bottle",
     bottleCard = R.drawable.bottle,
     backImage = R.drawable.bottle,
-    foodCombines = listOf(4, 2, 3))
+    foodCombines = arrayListOf<String>("4", "2", "3")
+    )
     {
     }
 }

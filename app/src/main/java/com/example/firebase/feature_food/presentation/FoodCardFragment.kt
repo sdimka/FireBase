@@ -1,11 +1,9 @@
 package com.example.firebase.feature_food.presentation
 
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,11 +20,8 @@ class FoodCardFragment: Fragment() {
 
     private lateinit var viewModel: FoodCardViewModel
 
-    private var img_big = 1
-    private var img_icon = 2
-//    private lateinit var mFoodCard: FoodCard
-//    private lateinit var bigImgURI: Uri
-//    private lateinit var iconImgURI: Uri
+    private var imgBig = 1
+    private var imgIcon = 2
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -93,11 +88,11 @@ class FoodCardFragment: Fragment() {
 
 
         big_fc_image.setOnClickListener {
-            fileSelector(img_big)
+            fileSelector(imgBig)
         }
 
         icon_fc_image.setOnClickListener {
-            fileSelector(img_icon)
+            fileSelector(imgIcon)
         }
     }
 
@@ -144,10 +139,10 @@ class FoodCardFragment: Fragment() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == img_big && resultCode == -1 && data != null && data.data != null){
+        if (requestCode == imgBig && resultCode == -1 && data != null && data.data != null){
             viewModel.gotChanges(FoodCardViewModel.Changes.BIG_IMG, data.data.toString())
             Picasso.get().load(data.data.toString()).into(big_fc_image)
-        } else if (requestCode == img_icon && resultCode == -1 && data != null && data.data != null){
+        } else if (requestCode == imgIcon && resultCode == -1 && data != null && data.data != null){
             viewModel.gotChanges(FoodCardViewModel.Changes.ICON_IMG, data.data.toString())
             Picasso.get().load(data.data.toString()).into(icon_fc_image)
         }

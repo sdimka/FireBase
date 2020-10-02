@@ -23,10 +23,9 @@ class FoodCardViewModel(application: Application): AndroidViewModel(application)
 
     private val currentCard = MutableLiveData<FoodCard>()
 
-    val changesList = MutableLiveData<List<Changes>>()
+    private val changesList = MutableLiveData<List<Changes>>()
 
-    private lateinit var storageRef: StorageReference
-    private lateinit var uploadTask: StorageTask<UploadTask.TaskSnapshot>
+    private var storageRef: StorageReference
 
     init {
         changesList.value = listOf()

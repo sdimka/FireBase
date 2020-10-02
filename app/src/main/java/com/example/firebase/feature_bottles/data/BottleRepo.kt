@@ -23,7 +23,7 @@ object BottleRepo {
             bottleImage = "R.drawable.bottle",
             bottleCard = R.drawable.bottle,
             backImage = R.drawable.bottle,
-            foodCombines = listOf(4, 2, 3)
+            foodCombines = arrayListOf("4", "2", "3")
             )
         )
 
@@ -41,7 +41,7 @@ object BottleRepo {
                 bottleImage = "R.drawable.bottle",
                 bottleCard = R.drawable.bottle,
                 backImage = R.drawable.bottle,
-                foodCombines = listOf(3, 11, 9)
+                foodCombines = arrayListOf("3", "11", "9")
             )
         )
         items.add(
@@ -58,7 +58,7 @@ object BottleRepo {
                 bottleImage = "R.drawable.bottle",
                 bottleCard = R.drawable.bottle,
                 backImage = R.drawable.bottle,
-                foodCombines = listOf(11, 8, 13, 14)
+                foodCombines = arrayListOf("11", "8", "13", "14")
             )
         )
         items.add(
@@ -72,7 +72,7 @@ object BottleRepo {
                 bottleImage = "R.drawable.bottle",
                 bottleCard = R.drawable.bottle,
                 backImage = R.drawable.bottle,
-                foodCombines = listOf(7, 5, 1)
+                foodCombines = arrayListOf("7", "5", "1")
             )
         )
         items.add(
@@ -89,7 +89,7 @@ object BottleRepo {
                 bottleImage = "R.drawable.bottle",
                 bottleCard = R.drawable.bottle,
                 backImage = R.drawable.bottle,
-                foodCombines = listOf(10, 6, 12)
+                foodCombines = arrayListOf("10", "6", "12")
             )
         )
     }

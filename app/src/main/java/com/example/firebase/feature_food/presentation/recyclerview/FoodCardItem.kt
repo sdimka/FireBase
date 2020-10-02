@@ -6,14 +6,13 @@ import com.example.firebase.R
 import com.example.firebase.feature_food.data.FoodCard
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.food_card_item.view.*
-import kotlinx.android.synthetic.main.fragmet_food_card.*
 
 class FoodCardItem(itemView: View): RecyclerView.ViewHolder(itemView) {
 
 
 
     fun bind(item: FoodCard){
-        itemView.text_name.text = item.type
+        itemView.text_name.text = item.type?.toUpperCase() ?: ""
 
         if (item.pict != null) {
             Picasso.get()
