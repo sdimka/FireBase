@@ -45,7 +45,6 @@ class FoodCardViewModel(application: Application): AndroidViewModel(application)
         val taskList = arrayListOf<Task<String>>()
 
         if (changesList.value?.contains(Changes.BIG_IMG)!!){
-
             val source = TaskCompletionSource<String>()
             val task1 = source.task
             uploadFile(currentCard.value!!.pict!!, source)

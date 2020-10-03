@@ -105,6 +105,7 @@ class FoodCardFragment: Fragment() {
                     .load(foodCard.pict)
                     .placeholder(R.drawable.ic_launcher_foreground)
                     .error(R.drawable.ic_baseline_error_outline_24)
+                    .fit().centerCrop()
                     .into(big_fc_image)
             } else {
                 Picasso.get()
