@@ -21,4 +21,22 @@ object Conversion {
             return 0
         }
     }
+
+    @InverseMethod("stringToFloat")
+    fun floatToString(oldValue: Number?, value: Number?): String? {
+        return if (value == 0) {
+            null
+        } else value.toString()
+    }
+
+    fun stringToFloat(oldValue: Number?, value: String?): Number {
+        return if (value == null || value.isEmpty()) {
+            0F
+        } else try {
+            value.toFloat()
+        } catch (e: NumberFormatException) {
+            oldValue?.let { return oldValue }
+            return 0F
+        }
+    }
 }

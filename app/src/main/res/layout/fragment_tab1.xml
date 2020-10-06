@@ -5,7 +5,6 @@
 
     <data>
 
-<!--        <import type="com.example.firebase.feature_bottles.presentation.BottleViewModel" />-->
         <import type="com.example.firebase.feature_bottles.presentation.bottledetail.Conversion"/>
         <import type="com.example.firebase.feature_bottles.presentation.bottledetail.ConversionColor"/>
 
@@ -14,6 +13,10 @@
             type="com.example.firebase.feature_bottles.presentation.BottleViewModel" />
 
     </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -61,7 +64,6 @@
                 android:ems="4"
                 android:text='@={Conversion.INSTANCE.intToString(viewModel.currBottle.year, viewModel.currBottle.year)}'
                 android:textSize="12sp" />
-
         </com.google.android.material.textfield.TextInputLayout>
 
         <RadioGroup
@@ -94,13 +96,91 @@
 
         </RadioGroup>
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_servingTemp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Подача"
+            app:layout_constraintEnd_toStartOf="@+id/textInputLayout6"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout7">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:maxLength="10"
+                android:text='@={viewModel.currBottle.servingTemp}'
+                android:textSize="12sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_place"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Место"
+            app:layout_constraintStart_toEndOf="@+id/text_servingTemp"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout6">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:maxLength="30"
+                android:text='@={viewModel.currBottle.place}'
+                android:textSize="12sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_grapeSort"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Сорт винограда"
+            app:layout_constraintStart_toEndOf="@+id/text_place"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout6">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:maxLength="30"
+                android:text='@={viewModel.currBottle.grapeSort}'
+                android:textSize="12sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textI_alko"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Градус"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/text_grapeSort"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout6">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="4"
+                android:inputType="text"
+                android:maxLength="10"
+                android:text='@={Conversion.INSTANCE.floatToString(viewModel.currBottle.alko, viewModel.currBottle.alko)}'
+                android:textSize="12sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/bottleEditorFoodCardRecycler"
             android:layout_width="0dp"
             android:layout_height="100dp"
             app:layout_constraintBottom_toTopOf="@+id/buttonSave"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_place" />
 
 
         <Button
@@ -114,4 +194,5 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    </ScrollView>
 </layout>
