@@ -61,6 +61,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-database-ktx:19.4.0'
     implementation 'com.google.firebase:firebase-storage:19.2.0'
 
+
     // Firebase Authentication (Kotlin)
     implementation 'com.google.firebase:firebase-auth-ktx:19.4.0'
 

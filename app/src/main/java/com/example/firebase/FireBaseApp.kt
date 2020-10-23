@@ -1,6 +1,7 @@
 package com.example.firebase
 
 import android.app.Application
+import com.google.firebase.FirebaseApp
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Response
@@ -20,6 +21,7 @@ class FireBaseApp: Application() {
         super.onCreate()
         instance = this
         initRetrofit()
+//        FirebaseApp.initializeApp()
     }
 
     fun initRetrofit(){

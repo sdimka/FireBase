@@ -6,13 +6,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.firebase.feature_bottles.data.model.Bottle
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
 class BottleFBService {
 
-    val databaseReference = Firebase.database.reference
+    val databaseReference: DatabaseReference = Firebase.database.reference
     val bottlesRef = databaseReference.child("Bottles")
 
     val TAG = "BottleFBService"

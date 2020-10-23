@@ -6,10 +6,12 @@ import android.net.Uri
 import android.util.Log
 import android.webkit.MimeTypeMap
 import android.widget.Toast
+import androidx.databinding.InverseMethod
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.firebase.R
 import com.example.firebase.feature_bottles.data.model.Bottle
 import com.example.firebase.feature_bottles.domain.BottleFBLiveData
 import com.example.firebase.feature_bottles.domain.BottleFBService
@@ -160,6 +162,17 @@ class BottleViewModel(application: Application): AndroidViewModel(application) {
             ChangesTypes.SMALL_IMG -> currBottle.value!!.smallImg = newVal
             ChangesTypes.BOTTLE_IMG -> currBottle.value!!.bottleImage = newVal
         }
+    }
+
+    @InverseMethod("toBlended")
+    fun isBlended(blended: Boolean): Int {
+        return if (blended) R.id.radio_button_blend
+        else R.id.radio_button_sorted
+    }
+
+    fun toBlended(type: Int): Boolean{
+        return type == R.id.radio_button_blend
+
     }
 
     enum class ChangesTypes {

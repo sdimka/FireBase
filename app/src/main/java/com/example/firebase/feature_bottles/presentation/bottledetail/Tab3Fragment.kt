@@ -9,7 +9,6 @@ import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.firebase.R
-import com.example.firebase.feature_bottles.data.model.Bottle
 import com.example.firebase.feature_bottles.presentation.BottleViewModel
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_tab3.*
@@ -38,9 +37,9 @@ class Tab3Fragment: Fragment() {
 
         viewModel.getBottle().observe(viewLifecycleOwner) {
             if (it != null) {
-                setCurrentBottleImage(it.bigImg, bottle_big_card)
-                setCurrentBottleImage(it.smallImg, bottle_small_card)
-                setCurrentBottleImage(it.bottleImage, bottle_bottle_image)
+                setImage(it.bigImg, bottle_big_card)
+                setImage(it.smallImg, bottle_small_card)
+                setImage(it.bottleImage, bottle_bottle_image)
             }
         }
 
@@ -61,7 +60,7 @@ class Tab3Fragment: Fragment() {
         }
     }
 
-    private fun setCurrentBottleImage(imgUrl: String?, view: ImageView) {
+    private fun setImage(imgUrl: String?, view: ImageView) {
         if (imgUrl != null) {
             Picasso.get()
                 .load(imgUrl)

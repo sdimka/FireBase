@@ -20,6 +20,10 @@
             android:id="@+id/nav_fridges"
             android:icon="@drawable/storefront"
             android:title="@string/menu_fridges" />
+        <item
+            android:id="@+id/userEditorFragment"
+            android:icon="@drawable/storefront"
+            android:title="@string/menu_users" />
     </group>
 
 </menu>

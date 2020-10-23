@@ -11,4 +11,5 @@
     <string name="menu_food">Еда</string>
     <string name="menu_fridges">Холодильники</string>
     <string name="menu_home">Домой</string>
+    <string name="menu_users">Пользователи</string>
 </resources>

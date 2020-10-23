@@ -24,4 +24,5 @@ object ConversionColor {
             else -> return 0
         }
     }
+
 }

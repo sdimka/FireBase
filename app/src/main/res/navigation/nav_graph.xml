@@ -29,4 +29,9 @@
         android:id="@+id/imagesListFragment"
         android:name="com.example.firebase.feature_bottles.presentation.images_list.ImagesListFragment"
         android:label="ImagesListFragment" />
+    <fragment
+        android:id="@+id/userEditorFragment"
+        android:name="com.example.firebase.feature_users.presentations.UserEditorFragment"
+        android:label="Редактор пользователей" />
+
 </navigation>
