@@ -26,7 +26,9 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tab2_degustation"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Дегустация"
             app:layout_constraintEnd_toEndOf="parent"
@@ -35,7 +37,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:ems="30"
                 android:inputType="textMultiLine"
@@ -46,7 +48,9 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tab2_vineyard"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Виноградник"
             app:layout_constraintEnd_toEndOf="parent"
@@ -55,7 +59,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tab2_degustation">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:ems="30"
                 android:inputType="textMultiLine"
@@ -66,7 +70,9 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tab2_production"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Производство"
             app:layout_constraintEnd_toEndOf="parent"
@@ -75,7 +81,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tab2_vineyard">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:ems="30"
                 android:inputType="textMultiLine"
