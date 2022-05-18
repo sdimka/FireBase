@@ -20,7 +20,8 @@ class Bottle(var refID: String? = null,
              var bottleImage: String? = null, var bottleCard: String? = null,
              var backImage: String? = null,
              var foodCombines: ArrayList<String>? = null,
-             var foodCombText: String? = null ) {
+             var foodCombText: String? = null,
+             var origin: Int? = null) {
 
 
 
