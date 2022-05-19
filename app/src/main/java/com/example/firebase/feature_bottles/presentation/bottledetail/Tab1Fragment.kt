@@ -1,6 +1,7 @@
 package com.example.firebase.feature_bottles.presentation.bottledetail
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,29 +9,32 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.firebase.databinding.FragmentTab1Binding
 import com.example.firebase.BR
 import com.example.firebase.R
-import com.example.firebase.databinding.FragmentTab1Binding
 import com.example.firebase.feature_bottles.presentation.BottleViewModel
-import com.example.firebase.feature_bottles.presentation.bottledetail.foodcardrecycler.FoodCardListAdapter
-import kotlinx.android.synthetic.main.fragment_tab1.*
+
 
 class Tab1Fragment: Fragment() {
 
     private lateinit var viewModel: BottleViewModel
 
-    lateinit var binding: FragmentTab1Binding
+//    private var _binding: FragmentTab1Binding? = null
+    private lateinit var binding: FragmentTab1Binding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
-        viewModel = ViewModelProvider(requireActivity()).get(BottleViewModel::class.java)
+        viewModel = ViewModelProvider(requireActivity())[BottleViewModel::class.java]
 
+//        _binding = FragmentTab1Binding.inflate(inflater, container, false)
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_tab1, container, false)
-        binding.setVariable(BR.viewModel, viewModel)
+
+//        binding.setVariable(BR.viewModel, viewModel)
+        binding.viewModel = viewModel
 
         return binding.root
 //        return inflater.inflate(R.layout.fragment_tab1, container, false)
@@ -41,32 +45,18 @@ class Tab1Fragment: Fragment() {
 
         binding.invalidateAll()
 
-        buttonSave.setOnClickListener {
+        binding.buttonSave.setOnClickListener {
             viewModel.saveBottle()
         }
 
-        val fcAdapter = FoodCardListAdapter()
-        fcAdapter.setClickListener {
-            viewModel.onFoodCardSelect(it)
-            fcAdapter.notifyDataSetChanged()
-        }
-
-        val lManager = GridLayoutManager(requireContext(), 8)
-
-        bottleEditorFoodCardRecycler.apply {
-            adapter = fcAdapter
-            layoutManager = lManager
-        }
-
-        viewModel.foodCardListData().observe(viewLifecycleOwner){
-            fcAdapter.setList(it)
-            fcAdapter.notifyDataSetChanged()
-        }
-
-        viewModel.getBottle().observe(viewLifecycleOwner){
+        viewModel.getBottle().observe(viewLifecycleOwner) {
             binding.invalidateAll()
-            fcAdapter.setCurrentBottle(it)
-            fcAdapter.notifyDataSetChanged()
         }
+
     }
+//
+//    override fun onDestroy() {
+//        super.onDestroy()
+//        _binding = null
+//    }
 }

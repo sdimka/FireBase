@@ -11,9 +11,7 @@ import com.example.firebase.BR
 import com.example.firebase.R
 import com.example.firebase.databinding.FragmentTab2Binding
 import com.example.firebase.feature_bottles.presentation.BottleViewModel
-import kotlinx.android.synthetic.main.fragment_tab1.*
-import kotlinx.android.synthetic.main.fragment_tab2.*
-import kotlinx.android.synthetic.main.fragment_tab2.buttonSave
+//import kotlinx.android.synthetic.main.fragment_tab2.buttonSave
 
 class Tab2Fragment: Fragment() {
 
@@ -25,12 +23,14 @@ class Tab2Fragment: Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
-        viewModel = ViewModelProvider(requireActivity()).get(BottleViewModel::class.java)
+        viewModel = ViewModelProvider(requireActivity())[BottleViewModel::class.java]
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_tab2, container, false)
+//        binding = DataBindingUtil.setContentView(requireActivity(), R.layout.fragment_tab2)
         binding.setVariable(BR.viewModel, viewModel)
+        binding.viewModel = viewModel
 
         return binding.root
     }
@@ -39,7 +39,7 @@ class Tab2Fragment: Fragment() {
 
         binding.invalidateAll()
 
-        buttonSave.setOnClickListener {
+        binding.buttonSave.setOnClickListener {
             viewModel.saveBottle()
         }
 

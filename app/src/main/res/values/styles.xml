@@ -43,4 +43,11 @@
         <item name="titleTextColor">@color/colorWhite</item>
     </style>
 
+    <style name="CustomSwitchStyle"
+        parent="Widget.MaterialComponents.CompoundButton.Switch">
+        <item name="thumbTint">@color/custom_switch_selector</item>
+        <item name="trackTint">@color/custom_tracktint_selector</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
 </resources>

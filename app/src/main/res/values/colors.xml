@@ -8,4 +8,6 @@
     <color name="lightWine">#AF7A2B</color>
     <color name="grey_300">#E0E0E0</color>
     <color name="colorWhite">#FFFFFF</color>
+    <color name="red">#D81313</color>
+    <color name="redLight">#CF6363</color>
 </resources>

@@ -257,15 +257,17 @@
                     android:textSize="12sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/bottleEditorFoodCardRecycler"
-                android:layout_width="0dp"
-                android:layout_height="100dp"
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/chip4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                app:layout_constraintBottom_toTopOf="@+id/buttonSave"
+                android:checked='@={viewModel.currBottle.deleteMark}'
+                android:theme="@style/CustomSwitchStyle"
+                android:text="Запись удалена"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/radioGroup2" />
+                app:layout_constraintTop_toBottomOf="@+id/radioGroup3" />
 
 
             <Button
@@ -273,9 +275,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="SAVE CHANGES"
+                android:layout_marginTop="15dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/chip4" />
+
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -26,6 +26,7 @@ class BottleItemEditorTabs: Fragment() {
         adapter.addFragment(Tab1Fragment(), "Основные")
         adapter.addFragment(Tab2Fragment(), "Описание")
         adapter.addFragment(Tab3Fragment(), "Картинки")
+        adapter.addFragment(Tab4Fragment(), "К Еде")
 
         viewPager.adapter = adapter
         tabLayout.setupWithViewPager(viewPager)

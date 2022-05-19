@@ -6,6 +6,7 @@ import android.net.Uri
 import android.util.Log
 import android.webkit.MimeTypeMap
 import android.widget.Toast
+import androidx.databinding.Bindable
 import androidx.databinding.InverseMethod
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
@@ -26,6 +27,7 @@ import com.google.firebase.storage.StorageReference
 class BottleViewModel(application: Application): AndroidViewModel(application) {
 
     private lateinit var bottleList: MutableLiveData<List<Bottle>>
+
     val currBottle = MutableLiveData<Bottle>()
 
     private val foodCardList = FoodCardFBLiveData()
@@ -180,5 +182,14 @@ class BottleViewModel(application: Application): AndroidViewModel(application) {
         SMALL_IMG,
         BOTTLE_IMG
     }
+
+//    @InverseMethod("setMarkDeleted")
+//    fun isMarkDeleted(value: Boolean?): Boolean {
+//        return value ?: false
+//    }
+//
+//    fun setMarkDeleted(value: Boolean): Boolean {
+//        return value
+//    }
 
 }

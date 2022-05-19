@@ -1,7 +1,6 @@
 package com.example.firebase.feature_bottles.data.model
 
 import com.example.firebase.BottleJson
-import com.example.firebase.R
 
 //class Bottle( var id: String? = null,
 //    var name: String? = null, var descripton: String? = null, var img: String? = null)
@@ -21,9 +20,8 @@ class Bottle(var refID: String? = null,
              var backImage: String? = null,
              var foodCombines: ArrayList<String>? = null,
              var foodCombText: String? = null,
-             var origin: Int? = null) {
-
-
+             var origin: Int? = null,
+             var deleteMark: Boolean? = null) {
 
 
 // Null default values create a no-argument default constructor, which is needed
