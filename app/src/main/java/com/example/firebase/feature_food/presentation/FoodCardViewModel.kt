@@ -64,6 +64,26 @@ class FoodCardViewModel(application: Application): AndroidViewModel(application)
             }
         }
 
+        if (changesList.value?.contains(Changes.ICON_IMG_BLACK)!!){
+            val source = TaskCompletionSource<String>()
+            val task3 = source.task
+            uploadFile(currentCard.value!!.iconBlack!!, source)
+            taskList.add(task3)
+            task3.addOnSuccessListener {
+                currentCard.value!!.iconBlack = it
+            }
+        }
+
+        if (changesList.value?.contains(Changes.ICON_IMG_BEIGE)!!){
+            val source = TaskCompletionSource<String>()
+            val task4 = source.task
+            uploadFile(currentCard.value!!.iconBeige!!, source)
+            taskList.add(task4)
+            task4.addOnSuccessListener {
+                currentCard.value!!.iconBeige = it
+            }
+        }
+
         val tasks = Tasks.whenAll(taskList)
         tasks
             .addOnSuccessListener {
@@ -137,6 +157,8 @@ class FoodCardViewModel(application: Application): AndroidViewModel(application)
             Changes.BIG_IMG -> currentCard.value!!.pict = newVal
             Changes.ICON_IMG -> currentCard.value!!.icon = newVal
             Changes.NAME -> currentCard.value!!.type = newVal
+            Changes.ICON_IMG_BLACK -> currentCard.value!!.iconBlack = newVal
+            Changes.ICON_IMG_BEIGE -> currentCard.value!!.iconBeige = newVal
         }
     }
 
@@ -147,6 +169,8 @@ class FoodCardViewModel(application: Application): AndroidViewModel(application)
     enum class Changes {
         BIG_IMG,
         ICON_IMG,
+        ICON_IMG_BLACK,
+        ICON_IMG_BEIGE,
         NAME
     }
 
