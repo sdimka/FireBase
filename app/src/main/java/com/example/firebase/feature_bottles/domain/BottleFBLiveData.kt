@@ -7,6 +7,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.getValue
 
 class BottleFBLiveData: LiveData<List<Bottle>>() {
 
@@ -27,7 +28,10 @@ class BottleFBLiveData: LiveData<List<Bottle>>() {
         override fun onDataChange(snapshot: DataSnapshot) {
             val list = arrayListOf<Bottle>()
             for (data in snapshot.children){
-                data.getValue(Bottle::class.java)?.let { list.add(it) }
+                data.getValue<Bottle>()?.let {
+                    it.refID = data.key
+                    list.add(it)
+                }
             }
             value = list
         }

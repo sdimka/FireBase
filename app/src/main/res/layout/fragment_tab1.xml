@@ -28,11 +28,13 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:minWidth="150dp"
+                android:layout_marginTop="10dp"
                 android:hint="Наименование"
-                app:layout_constraintEnd_toStartOf="@+id/textInputLayout6"
-                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintEnd_toStartOf="@+id/radioGroupOrigin"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="parent"
+                >
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="wrap_content"
@@ -44,16 +46,53 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            <RadioGroup
+                android:id="@+id/radioGroupOrigin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/border_solid"
+                android:checkedButton="@={ConversionColor.INSTANCE.originToID(viewModel.currBottle.origin, viewModel.currBottle.origin)}"
+                android:orientation="horizontal"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/textInputLayout7"
+                app:layout_constraintTop_toTopOf="parent">
+
+            <RadioButton
+                android:id="@+id/radio_button_origin_domestic"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Местное" />
+
+            <RadioButton
+                android:id="@+id/radio_button_origin_foreign"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Коллекция" />
+
+            <RadioButton
+                android:id="@+id/radio_button_origin_sparkling"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Шампанское" />
+
+            </RadioGroup>
+
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout6"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:minWidth="90dp"
+                android:layout_marginTop="10dp"
                 android:hint="Год"
                 app:layout_constraintEnd_toStartOf="@+id/textI_alko"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/textInputLayout7"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout7">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="wrap_content"
@@ -70,11 +109,13 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:minWidth="90dp"
+                android:layout_marginTop="10dp"
                 android:hint="Градус"
                 app:layout_constraintEnd_toStartOf="@+id/radioGroup"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/textInputLayout6"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout7">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="wrap_content"
@@ -90,7 +131,7 @@
                 android:id="@+id/radioGroup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="15dp"
                 android:background="@drawable/border_solid"
                 android:checkedButton="@={ConversionColor.INSTANCE.intToID(viewModel.currBottle.color, viewModel.currBottle.color)}"
                 android:orientation="horizontal"
@@ -98,7 +139,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/textI_alko"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout7">
 
                 <RadioButton
                     android:id="@+id/radio_button_white"
@@ -124,13 +165,14 @@
                 android:id="@+id/text_servingTemp"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="wrap_content"
+                android:minWidth="90dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:hint="Подача"
                 app:layout_constraintEnd_toStartOf="@+id/text_place"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayout7">
+                app:layout_constraintTop_toBottomOf="@+id/radioGroup">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="wrap_content"
@@ -147,12 +189,13 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:minWidth="90dp"
                 android:layout_marginTop="15dp"
                 android:hint="Место"
                 app:layout_constraintEnd_toStartOf="@+id/text_grapeSort"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/text_servingTemp"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayout6">
+                app:layout_constraintTop_toBottomOf="@+id/radioGroup">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="wrap_content"
@@ -169,11 +212,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
+                android:minWidth="90dp"
                 android:hint="Сорт винограда"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/text_place"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayout6">
+                app:layout_constraintTop_toBottomOf="@+id/radioGroup">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="wrap_content"
